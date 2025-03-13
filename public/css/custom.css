@@ -11990,3 +11990,15 @@ footer {
   height: 450px; /* Pas de hoogte aan zoals je wilt */
   object-fit: cover; /* Zorgt ervoor dat de afbeelding proportioneel wordt bijgesneden zonder vervorming */
 }
+
+/* Code zelf een beetje meer ruimte geven en een betere uitstraling */
+pre {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ecf0f1;
+  font-family: "Courier New", monospace;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 500px; /* Zorg ervoor dat het scrollbaar wordt als de code te lang is */
+  padding: 20px;
+}
