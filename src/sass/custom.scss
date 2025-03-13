@@ -1,0 +1,142 @@
+/* Variabelen */
+$primary: #2C3E50;
+$secondary: #ffcc66;
+$textcolor: #A9CCE3;
+$neutral-light: #ECF0F1;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #34495E; 
+    color: $textcolor;
+}
+
+/* Sectie styling */
+#welcome {
+    height: 80vh; /* Zorgt ervoor dat het scherm volledig gevuld is */
+    position: relative;
+}
+
+/* Achtergrondafbeelding */
+.bg-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%; /* Zorgt ervoor dat de afbeelding breder is */
+    height: 100%;
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding het hele scherm vult zonder vervorming */
+    transform: translate(-50%, -50%); /* Centreert de afbeelding */
+    z-index: -1; /* Zorgt ervoor dat de afbeelding achter de tekst komt */
+}
+
+/* Donkere overlay voor leesbaarheid */
+#welcome .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: rgba(46, 26, 71, 0.7); /* Donkerpaars met transparantie */
+    z-index: 0;
+}
+
+
+
+.about-me {
+    padding: 50px 0;
+    //background-color: #f0f0f0;
+    text-align: center;
+    border-top: 10px solid $primary; 
+}
+
+.contact-info {
+    padding: 50px 0;
+    //background-color: #f0f0f0;
+    border-top: 10px solid $primary; 
+    border-bottom: 10px solid $primary;
+    text-align: center;
+}
+
+.about-me img {
+    max-width: 70%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+#projects {
+    padding: 50px 0;
+    //font-weight: bold;
+}
+
+.navbar {
+    background-color: $primary;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: white !important;
+    &:hover {color: $secondary !important; }
+}
+
+.project-card {
+    //border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: $primary;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .project-content {
+        padding: 10px;
+       h5 { font-size: 1.25rem; font-weight: bold; color: $textcolor; }
+        p { font-size: 1rem; color: $textcolor; margin-bottom: 5px; }
+    }
+
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+}
+
+.contact-info .contact-item {
+    margin: 20px 0;
+    text-align: center;
+    i { color: white; margin-bottom: 15px; transition: transform 0.3s, color 0.3s; }
+    i:hover { transform: scale(1.2); color: $secondary; }
+    a { color: $textcolor; text-decoration: none; font-weight: bold; &:hover { color: $textcolor; } }
+}
+
+footer {
+    background-color: $primary;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.screenshot-img {
+    width: 100%; /* Zorgt ervoor dat de breedte zich aanpast aan de container */
+    height: 250px; /* Pas deze hoogte aan naar wens */
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding de ruimte vult zonder te vervormen */
+}
+
+
+.game-img {
+    width: 100%;        /* Zorgt ervoor dat de afbeelding de volledige breedte van de container vult */
+    height: 450px;      /* Pas de hoogte aan zoals je wilt */
+    object-fit: cover;  /* Zorgt ervoor dat de afbeelding proportioneel wordt bijgesneden zonder vervorming */
+}
