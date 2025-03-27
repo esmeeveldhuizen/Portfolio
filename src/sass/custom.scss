@@ -155,5 +155,13 @@ pre {
     padding: 20px;
 }
 
+.contact-icons .contact-item i {
+    color: $primary;  /* Gebruik de tekstkleur die je eerder hebt gedefinieerd */
+    transition: color 0.3s ease;  /* Voeg een overgang toe voor een vloeiende kleurverandering */
+}
 
+/* Hover effect: de icoontjes worden dezelfde kleur als de tekst */
+.contact-icons .contact-item i:hover {
+    color: $textcolor;  /* Dit zorgt ervoor dat de hoverkleur hetzelfde is als de tekstkleur */
+}
 
