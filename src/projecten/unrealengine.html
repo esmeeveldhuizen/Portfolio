@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../sass/tandwiel.png">
-    <title>EV - Unreal Engine</title>
+    <title>EV - Alter Ego</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -44,7 +44,81 @@
         </div>
     </nav>
 
-    <!-- hier de context -->
+
+  <!-- Hero Section -->
+  <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../sass/placeholder.jpg'); background-size: cover; background-position: center;">
+    <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+    <div class="container position-relative z-index-2">
+        <h1 class="display-3 fw-bold glow-text">Alter ego</h1>
+        <p class="lead">An experience made in 8 weeks with 3 developers</p>
+    </div>
+</section>
+
+<!-- Over de game (Split layout) -->
+<section class="game-info container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <iframe width="560" height="315" 
+src="https://youtu.be/SkHtUyeHaLQ" 
+title="YouTube video player" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen>
+</iframe>
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">Lost Mother</h2>
+            <p>aaa</p>
+        </div>
+    </div>
+</section>
+
+<!-- Screenshots Grid -->
+<section class="container py-5 text-center">
+    <h2 class="mb-4">Screenshots</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="../sass/placeholder.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+        </div>
+        <div class="col-md-4">
+            <img src="../sass/placeholder.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+        </div>
+        <div class="col-md-4">
+            <img src="../sass/placeholder.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+        </div>
+    </div>
+</section>
+
+<!-- Gameplay Video and Code Showcase Section -->
+<section class="container py-5">
+<h2 class="mb-4 text-center">Code snippet</h2>
+<div class="row justify-content-center">
+    <!-- Gameplay Video Column -->
+    <div class="col-md-6">
+        <div class="ratio ratio-16x9 mb-4">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JEZVt9sxF-0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <!-- Code Showcase Column -->
+    <div class="col-md-6">
+        <div class="bg-primary p-3 rounded position-relative">
+            <pre class="p-3 rounded mb-0">
+                <code class="language-csharp">
+                    void DeliverPackage() {
+                        if (isNearTarget) {
+                            Score += 10;
+                            Debug.Log("Package Delivered!");
+                        } else {
+                            Debug.Log("Missed the target!");
+                        }
+                    }
+                </code>
+            </pre>
+        </div>
+    </div>
+</div>
+</section>
+
 
      <!-- Footer -->
      <footer class=" text-center py-3">
