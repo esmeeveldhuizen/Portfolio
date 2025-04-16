@@ -37,32 +37,39 @@
     </div>
 </nav>
 
-<section>
-<div class="grid" id="myGrid"></div>
-<div id="row">
+<section class="position-relative text-white text-center" id="gridSection">
+    <div class="overlay"></div>
 
-    <div id="tools">
-        <button id="penBtn"><i class="fas fa-pen"></i></button>
-        <button id="eraserBtn"><i class="fas fa-eraser"></i></button>
+    <!-- Tekst bovenop -->
+    <div class="overlay-text position-absolute top-50 start-50 translate-middle z-index-2">
+        <h1 class="display-1 fw-bold glow-text">Esmée Veldhuizen</h1>
+        <p class="lead">XR Developer | Creative Mind | Code Enthusiast</p>
     </div>
 
-    <div id="colors">
-        <button id="pink" style="background-color: pink;"></button>
-        <button id="green" style="background-color: green;"></button>
-        <button id="blue" style="background-color: blue;"></button>
-        <button id="yellow" style="background-color: yellow;"></button>
-        <button id="purple" style="background-color: purple;"></button>
-
-        <button id="red" style="background-color: red;"></button>
-        <button id="orange" style="background-color: orange;"></button>
-        <button id="grey" style="background-color: grey;"></button>
-        <button id="white" style="background-color: white;"></button>
-        <button id="black" style="background-color: black;"></button>
+    <!-- Jouw interactieve tool -->
+    <div class="grid" id="myGrid"></div>
+    <div id="row">
+        <div id="tools">
+            <button id="penBtn"><i class="fas fa-pen"></i></button>
+            <button id="eraserBtn"><i class="fas fa-eraser"></i></button>
+        </div>
+        <div id="colors">
+            <button id="pink" style="background-color: pink;"></button>
+            <button id="green" style="background-color: green;"></button>
+            <button id="blue" style="background-color: blue;"></button>
+            <button id="yellow" style="background-color: yellow;"></button>
+            <button id="purple" style="background-color: purple;"></button>
+            <button id="red" style="background-color: red;"></button>
+            <button id="orange" style="background-color: orange;"></button>
+            <button id="grey" style="background-color: grey;"></button>
+            <button id="white" style="background-color: white;"></button>
+            <button id="black" style="background-color: black;"></button>
+        </div>
     </div>
-    
-</div>
-<p class="grid-text">^ This is also made by me btw ;)</p>
+
+    <p class="grid-text">^ This is also made by me btw ;)</p>
 </section>
+
 <!-- Welkom Sectie 
 <section id="welcome" class="text-center text-white position-relative d-flex justify-content-center align-items-center">
     <img src="./images/banner/jester.jpg" alt="Achtergrond" class="bg-img img-fluid">
@@ -99,7 +106,7 @@
         <div class="col-md-4">
             <div class="project-card">
                 <a href="projecten/theexperiment.html">
-                    <img src="images/exp2.jpg" alt="The Experiment: Nature Edition">
+                    <img src="images/Experi/exp4.jpg" alt="The Experiment: Nature Edition">
                 </a>
                 <div class="project-content">
                     <h5 class="project-title">The Experiment: Nature Edition</h5>
@@ -125,7 +132,7 @@
         <div class="col-md-4">
             <div class="project-card">
                 <a href="projecten/unrealengine.html">
-                    <img src="placeholder.jpg" alt="Project 4">
+                    <img src="images/lostmother/mom.jpg" alt="Project 4">
                 </a>
                 <div class="project-content">
                     <h5 class="project-title">AlterEgo</h5>
@@ -138,7 +145,7 @@
         <div class="col-md-4">
             <div class="project-card">
                 <a href="projecten/javascript.html">
-                    <img src="placeholder.jpg" alt="Project 5">
+                    <img src="images/canvas/canv.jpg" alt="Project 5">
                 </a>
                 <div class="project-content">
                     <h5 class="project-title">Pixel art</h5>
@@ -186,6 +193,7 @@
                     </a>
                     <a href="https://discord.com/invite/qwertyde6e" target="_blank" class="contact-item">
                         <i class="fab fa-discord fa-2x"></i>
+                        
                     </a>
                 </div>
             </div>
