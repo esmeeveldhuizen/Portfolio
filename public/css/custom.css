@@ -12062,3 +12062,9 @@ pre {
   margin-top: 15px;
   color: #A9CCE3; /* Kleur van de tekst */
 }
+
+.btn-secondary {
+  background-color: #3b5168;
+  color: white;
+  border-color: #3b5168;
+}

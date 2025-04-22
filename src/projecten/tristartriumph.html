@@ -79,53 +79,236 @@
         </div>
     </section>
 
-    <!-- Gameplay Video Section -->
-    <section class="container py-5 text-center">
-        <h2 class="mb-4">Gameplay Video</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-8"> <!-- Beperkt de breedte op grotere schermen -->
-                <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JEZVt9sxF-0" allowfullscreen></iframe>
+    
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Code</h2>
+    
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Platform</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Player</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Crown</button>
+        </div>
+    
+        <div id="accordion">
+    
+            <!-- Jump -->
+            <div id="collapseJump" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                public class MovingPlatform : MonoBehaviour
+            {
+                [SerializeField] private float speed = 4f;
+                [SerializeField] private int startingPoint;
+                [SerializeField] private Transform[] wayPoints;
+                private int i;
+
+                void Start()
+                {
+                    transform.position = wayPoints[startingPoint].position;
+                }
+
+                void Update() //platform keeps looping so it doesn't stop
+                {
+                    if (Vector3.Distance(transform.position, wayPoints[i].position) < 0.02f)
+                    {
+                        i++;
+                        if (i == wayPoints.Length)
+                        {
+                            i = 0;
+                        }
+                    }
+                    transform.position = Vector3.MoveTowards(transform.position, wayPoints[i].position, speed * Time.deltaTime);
+                }
+
+                void OnCollisionStay(Collision collision) //platform parents to the player so you don't have to walk with it
+                {
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        collision.gameObject.transform.parent = transform;
+                    }
+                }
+                void OnCollisionExit(Collision collision) //platform unparent from player
+                {
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        collision.gameObject.transform.parent = null;
+                    }
+                }
+            }
+                    </code></pre>       
+            <!-- GIF -->
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-6">
+                <img src="../gifs/triplatform.gif" alt="Platform visual" class="img-fluid rounded shadow">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    
+            <!-- Star -->
+            <div id="collapseStar" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                            public class PlayerController : MonoBehaviour
+                            {
+                                private Controls controls;
+                                private InputAction move;
+
+                                private Rigidbody rb;
+
+                                [SerializeField] private float speed = 1.0f;
+                                [SerializeField] private float jumpHeight = 5.0f;
+                                [SerializeField] private float maxSpeed = 5.0f;
+
+                                private Vector3 direction = Vector3.zero;
+
+                                [SerializeField] Camera playerCamera;
+
+                                private void Awake()
+                                {
+                                    rb = GetComponent<Rigidbody>();
+                                    controls = new Controls();
+                                }
+
+                                private void OnEnable() //enables jumping and walking 
+                                {
+                                    controls.NormalControls.Jump.started += DoJump;
+                                    move = controls.NormalControls.Move;
+                                    controls.NormalControls.Enable();
+                                }
+
+                                private void OnDisable() //disables jumping and walking
+                                {
+                                    controls.NormalControls.Jump.started -= DoJump;
+                                    controls.NormalControls.Disable();
+                                }
+
+                                private void FixedUpdate()
+                                {
+                                    direction += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * speed;
+                                    direction += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * speed;
+
+                                    rb.AddForce(direction, ForceMode.Impulse);
+                                    direction = Vector3.zero;
+
+                                    if (rb.velocity.y < 0f)
+                                    {
+                                        rb.velocity -= Physics.gravity.y * Time.fixedDeltaTime * Vector3.down;
+                                    }
+
+                                    Vector3 horizontalVelocity = rb.velocity;
+                                    horizontalVelocity.y = 0;
+                                    if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
+                                    {
+                                        rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+                                    }
+
+                                    LookAt();
+                                }
+
+                                private void LookAt() //makes the camera follow the player
+                                {
+                                    Vector3 lookDirection = rb.velocity;
+                                    lookDirection.y = 0f;
+
+                                    if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && lookDirection.sqrMagnitude > 0.1f)
+                                    {
+                                        this.rb.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+                                    }
+                                    else
+                                    {
+                                        rb.angularVelocity = Vector3.zero;
+                                    }
+                                }
+
+                                private Vector3 GetCameraRight(Camera playerCamera)
+                                {
+                                    Vector3 right = playerCamera.transform.right;
+                                    right.y = 0;
+                                    return right.normalized;
+                                }
+
+                                private Vector3 GetCameraForward(Camera playerCamera)
+                                {
+                                    Vector3 forward = playerCamera.transform.forward;
+                                    forward.y = 0;
+                                    return forward.normalized;
+                                }
+
+
+                                private void DoJump(InputAction.CallbackContext obj) //player can only jump when on the ground
+                                {
+                                    if (isGrounded())
+                                    {
+                                        direction += Vector3.up * jumpHeight;
+                                        GetComponent<Animator>().SetTrigger("jump");
+                                    }
+                                }
+
+                                private bool isGrounded()  // checks if player in on the ground
+
+                                {
+                                    Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
+                                    if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                            }
+                        
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Code Showcase Section -->
-<section class="container py-5">
-    <h2 class="mb-4 text-center">Code Showcase</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="bg-primary p-3 rounded position-relative">
-                <pre class="p-3 rounded mb-0">
-                    <code class="language-csharp">
-                        void DeliverPackage() {
-                            if (isNearTarget) {
-                                Score += 10;
-                                Debug.Log("Package Delivered!");
-                            } else {
-                                Debug.Log("Missed the target!");
-                            }
-                        }
-                        ee
-
-                        
+    </div>
 
     
-                        ee
-                        ee
-
-
-                        ee
-                    </code>
-                </pre>
+            <!-- Win -->
+            <div id="collapseWin" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                        public class CrownPickup : Pickup
+                        {
+                            [SerializeField] private GameObject winCanvas;
+                            [SerializeField] private Button button;                     
+                            [SerializeField] AudioSource winAudio;
+                        
+                        
+                            public override void Activate(GameObject other) //this happens when player touches the crown
+                            {
+                                if (other.CompareTag("Player"))
+                                {
+                                    CollectionManager CollectionManager = other.GetComponent<CollectionManager>();
+                                    CollectionManager.CrownPickup.SetActive(false);
+                                    button.Select();
+                        
+                                    ScoreManager.Instance.TimerActive = false;
+                                    winCanvas.SetActive(true);
+                                    winAudio.Play();
+                                }
+                            }
+                        }
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/tricrown.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-
-
+    
+        </div>
+    </section>
+    
    
 
     <!-- Footer -->

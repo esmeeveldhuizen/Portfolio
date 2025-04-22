@@ -217,3 +217,10 @@ pre {
     margin-top: 15px;
     color: $textcolor; /* Kleur van de tekst */
 }
+
+
+.btn-secondary {
+    background-color: #3b5168;  // jouw gewenste kleur
+    color: white;               // tekstkleur aanpassen indien nodig
+    border-color: #3b5168;      // randkleur als je die ook mee wilt
+  }
