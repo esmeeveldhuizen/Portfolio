@@ -80,51 +80,181 @@
         </div>
     </section>
 
-    <!-- Gameplay Video Section -->
-    <section class="container py-5 text-center">
-        <h2 class="mb-4">Gameplay Video</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-8"> <!-- Beperkt de breedte op grotere schermen -->
-                <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="https://youtu.be/0tiAWTIC5As?si=K2O6dL9flykFjLO0" allowfullscreen></iframe>
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Code</h2>
+    
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Door</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Fade</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Pickup</button>
+        </div>
+    
+        <div id="accordion">
+    
+            <!-- Jump -->
+            <div id="collapseJump" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                            public class OpenDoor : MonoBehaviour
+                            {
+                                [SerializeField] Transform door;
+                                //[SerializeField] Transform socket;
+                                [SerializeField] public GameObject handle;
+                                private float openSpeed = 0.5f;
+                                private bool handleInPlace = false;
+                            
+                                private Vector3 startPos;
+                                private Vector3 targetPos;
+                            
+                                public AudioSource Audio;
+                                public AudioClip openDoor;
+                                public AudioClip WrongDoor;
+                            
+                                void Start()
+                                {
+                                    startPos = door.position;
+                                    targetPos = new Vector3(startPos.x, startPos.y + 3f, startPos.z);
+                                }
+                            
+                                void Update()
+                                {
+                                    if (handleInPlace == true)
+                                    {
+                                        DoorOpening();
+                                    }
+                                }
+                            
+                                void DoorOpening()
+                                {
+                                    door.position = Vector3.Lerp(door.position, targetPos, Time.deltaTime * openSpeed);
+                                }
+                            
+                                private void OnTriggerEnter(Collider other)
+                                {
+                                    if (other.gameObject == handle)
+                                    {
+                                        StartCoroutine(WaitBeforeOpening());
+                                        handle.transform.SetParent(door);
+                            
+                                        if(this.gameObject.name == "FirstDoor")
+                                        {
+                                            WaveSpawner.Instance.Door1Opened = true;
+                                        }
+                                        if (this.gameObject.name == "SecondDoor")
+                                        {
+                                            WaveSpawner.Instance.Door2Opened = true;
+                                        }
+                                        if (this.gameObject.name == "LastDoor")
+                                        {
+                                            WaveSpawner.Instance.FinalDoorOpened = true;
+                                        }
+                                    }
+                                    if(other.gameObject != handle && other.CompareTag("Gear"))
+                                    {
+                                        Audio.clip = WrongDoor;
+                                        Audio.Play();
+                                    }
+                                }
+                            
+                                private IEnumerator WaitBeforeOpening()
+                                {
+                                    yield return new WaitForSeconds(3f);
+                                    handleInPlace = true;
+                                    Audio.clip = openDoor;
+                                    Audio.Play();
+                                }
+                            }
+                    </code></pre>       
+            <!-- GIF -->
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-6">
+                <img src="../gifs/triplatform.gif" alt="Platform visual" class="img-fluid rounded shadow">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    
+            <!-- Star -->
+            <div id="collapseStar" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                            public class FadeIn : MonoBehaviour
+                            {
+                                [SerializeField] private GameObject sphere;
+                                float fadeAmount = 0;
+                            
+                                public void FadeBegin()
+                                {
+                                    {
+                                        sphere.SetActive(true);
+                                        StartCoroutine(BlackScreenFadeIn());
+                                    }
+                                }
+                            
+                                public IEnumerator BlackScreenFadeIn()
+                                {
+                                    while (fadeAmount < 1)
+                                    {
+                                        sphere.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeAmount);
+                                        yield return new WaitForSeconds(0.03f);
+                                        fadeAmount += 0.015f;
+                            
+                                        if (fadeAmount >= 0.95f)
+                                        {
+                                            SceneManager.LoadScene("GameOver");
+                                        }
+                                    }
+                                }
+                        
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Code Showcase Section -->
-<section class="container py-5">
-    <h2 class="mb-4 text-center">Code Showcase</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="bg-primary p-3 rounded position-relative">
-                <pre class="p-3 rounded mb-0">
-                    <code class="language-csharp">
-                        void DeliverPackage() {
-                            if (isNearTarget) {
-                                Score += 10;
-                                Debug.Log("Package Delivered!");
-                            } else {
-                                Debug.Log("Missed the target!");
-                            }
-                        }
-                        ee
-
-                        
+    </div>
 
     
-                        ee
-                        ee
+            <!-- Win -->
+            <div id="collapseWin" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                                        public class BloodVial : MonoBehaviour
+                                        {
+                                            private void OnTriggerEnter(Collider other)
+                                            {
+                                                if(other.CompareTag("Player"))
+                                                {
+                                                    PlayerHealth PH = other.GetComponent<PlayerHealth>();
+                                                    if(PH.Phealth != 100)
+                                                    {
+                                                        PH.Phealth += 50;
+                                                    }
 
+                                                    if(PH.Phealth > 100)
+                                                    {
+                                                        PH.Phealth = 100;
+                                                    }
 
-                        ee
-                    </code>
-                </pre>
+                                                    Destroy(this.gameObject);
+                                                }
+                                            }
+                                        }
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/tricrown.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
             </div>
         </div>
     </div>
-</section>
 
+    
+        </div>
+    </section>
+    
 
 
     <!-- Footer -->

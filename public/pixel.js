@@ -89,7 +89,7 @@ function paint(gridItem) {
     if (currentTool === "pen") {
         gridItem.style.backgroundColor = selectedColor;
     } else if (currentTool === "eraser") {
-        gridItem.style.backgroundColor = "rgba(234, 234, 234, 0.651)";
+        gridItem.style.backgroundColor = "rgb(59, 140, 160)";
     }
 };
 
