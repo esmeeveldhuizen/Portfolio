@@ -9,10 +9,10 @@
     <link href="../css/custom.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-<body>
+<body> 
 
     <!-- Navigatiebalk -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-pink shadow rounded bg-primary">
+    <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
         <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,106 +22,296 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="../index.html">Main page</a>
                 </li>
-                 <!-- Dropdown Menu voor Projecten -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ☰
-                </a>
-                <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
-                    <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
-                    <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
-                    <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
-                    <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
-                    <a class="dropdown-item text-white" href="javascript.html">Pixel Canvas</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-white" href="jesterjack.html">JesterJack</a>
-                    <a class="dropdown-item text-white" href="bubblepedia.html">Bubblepedia</a>
-
-
-                </div>
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ☰
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
+                        <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
+                        <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
+                        <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
+                        <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
+                        <a class="dropdown-item text-white" href="javascript.html">Pixel Canvas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-white" href="jesterjack.html">JesterJack</a>
+                        <a class="dropdown-item text-white" href="bubblepedia.html">Bubblepedia</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/lostmother/mom.jpg'); background-size: cover; background-position: center;">
+        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative z-index-2">
+            <h1 class="display-3 fw-bold glow-text">Verloren Moeder</h1>
+            <p class="lead">An experience made in 8 weeks with 3 developers</p>
+        </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../sass/placeholder.jpg'); background-size: cover; background-position: center;">
-    <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
-    <div class="container position-relative z-index-2">
-        <h1 class="display-3 fw-bold glow-text">Alter ego</h1>
-        <p class="lead">An experience made in 8 weeks with 3 developers</p>
-    </div>
-</section>
+    <!-- Over de game (Split layout) -->
+    <section class="game-info container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img src="../images/lostmother/mom.jpg" alt="Gameplay" class="img-fluid rounded shadow-lg game-img">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">A short VR experience!</h2>
+                <p>You play as a curious kid waiting for your mom on a busy shopping street. She tells you to stay on the bench while she quickly runs an errand. But distractions are everywhere, fruit falls on the ground, a balloon floats by… and before you know it, you’ve wandered off. Your mom calls out, more worried each time. When she finally finds you, she's upset, but mostly just relieved. She hugs you tight, glad you're safe.</p>
+           </div>
+        </div>
+    </section>
 
-<!-- Over de game (Split layout) -->
-<section class="game-info container py-5">
-    <div class="row align-items-center">
-        <div class="col-md-6 text-center">
-            <iframe width="560" height="315" 
-src="https://youtu.be/SkHtUyeHaLQ" 
-title="YouTube video player" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen>
-</iframe>
+    <!-- Screenshots Grid -->
+    <section class="container py-5 text-center">
+        <h2 class="mb-4">Screenshots</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../images/lostmother/mom.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/lostmother/mom.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/lostmother/mom.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
         </div>
-        <div class="col-md-6">
-            <h2 class="mb-4">Lost Mother</h2>
-            <p>aaa</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Screenshots Grid -->
-<section class="container py-5 text-center">
-    <h2 class="mb-4">Screenshots</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="../sass/placeholder.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+    
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Code</h2>
+    
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Platform</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Player</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Crown</button>
         </div>
-        <div class="col-md-4">
-            <img src="../sass/placeholder.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
-        </div>
-        <div class="col-md-4">
-            <img src="../sass/placeholder.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
-        </div>
-    </div>
-</section>
+    
+        <div id="accordion">
+    
+            <!-- Jump -->
+            <div id="collapseJump" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                public class MovingPlatform : MonoBehaviour
+            {
+                [SerializeField] private float speed = 4f;
+                [SerializeField] private int startingPoint;
+                [SerializeField] private Transform[] wayPoints;
+                private int i;
 
-<!-- Gameplay Video and Code Showcase Section -->
-<section class="container py-5">
-<h2 class="mb-4 text-center">Code snippet</h2>
-<div class="row justify-content-center">
-    <!-- Gameplay Video Column -->
-    <div class="col-md-6">
-        <div class="ratio ratio-16x9 mb-4">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JEZVt9sxF-0" allowfullscreen></iframe>
-        </div>
-    </div>
-    <!-- Code Showcase Column -->
-    <div class="col-md-6">
-        <div class="bg-primary p-3 rounded position-relative">
-            <pre class="p-3 rounded mb-0">
-                <code class="language-csharp">
-                    void DeliverPackage() {
-                        if (isNearTarget) {
-                            Score += 10;
-                            Debug.Log("Package Delivered!");
-                        } else {
-                            Debug.Log("Missed the target!");
+                void Start()
+                {
+                    transform.position = wayPoints[startingPoint].position;
+                }
+
+                void Update() //platform keeps looping so it doesn't stop
+                {
+                    if (Vector3.Distance(transform.position, wayPoints[i].position) < 0.02f)
+                    {
+                        i++;
+                        if (i == wayPoints.Length)
+                        {
+                            i = 0;
                         }
                     }
-                </code>
-            </pre>
+                    transform.position = Vector3.MoveTowards(transform.position, wayPoints[i].position, speed * Time.deltaTime);
+                }
+
+                void OnCollisionStay(Collision collision) //platform parents to the player so you don't have to walk with it
+                {
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        collision.gameObject.transform.parent = transform;
+                    }
+                }
+                void OnCollisionExit(Collision collision) //platform unparent from player
+                {
+                    if (collision.gameObject.CompareTag("Player"))
+                    {
+                        collision.gameObject.transform.parent = null;
+                    }
+                }
+            }
+                    </code></pre>       
+            <!-- GIF -->
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-6">
+                <img src="../gifs/triplatform.gif" alt="Platform visual" class="img-fluid rounded shadow">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    
+            <!-- Star -->
+            <div id="collapseStar" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                            public class PlayerController : MonoBehaviour
+                            {
+                                private Controls controls;
+                                private InputAction move;
+
+                                private Rigidbody rb;
+
+                                [SerializeField] private float speed = 1.0f;
+                                [SerializeField] private float jumpHeight = 5.0f;
+                                [SerializeField] private float maxSpeed = 5.0f;
+
+                                private Vector3 direction = Vector3.zero;
+
+                                [SerializeField] Camera playerCamera;
+
+                                private void Awake()
+                                {
+                                    rb = GetComponent<Rigidbody>();
+                                    controls = new Controls();
+                                }
+
+                                private void OnEnable() //enables jumping and walking 
+                                {
+                                    controls.NormalControls.Jump.started += DoJump;
+                                    move = controls.NormalControls.Move;
+                                    controls.NormalControls.Enable();
+                                }
+
+                                private void OnDisable() //disables jumping and walking
+                                {
+                                    controls.NormalControls.Jump.started -= DoJump;
+                                    controls.NormalControls.Disable();
+                                }
+
+                                private void FixedUpdate()
+                                {
+                                    direction += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * speed;
+                                    direction += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * speed;
+
+                                    rb.AddForce(direction, ForceMode.Impulse);
+                                    direction = Vector3.zero;
+
+                                    if (rb.velocity.y < 0f)
+                                    {
+                                        rb.velocity -= Physics.gravity.y * Time.fixedDeltaTime * Vector3.down;
+                                    }
+
+                                    Vector3 horizontalVelocity = rb.velocity;
+                                    horizontalVelocity.y = 0;
+                                    if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
+                                    {
+                                        rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+                                    }
+
+                                    LookAt();
+                                }
+
+                                private void LookAt() //makes the camera follow the player
+                                {
+                                    Vector3 lookDirection = rb.velocity;
+                                    lookDirection.y = 0f;
+
+                                    if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && lookDirection.sqrMagnitude > 0.1f)
+                                    {
+                                        this.rb.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+                                    }
+                                    else
+                                    {
+                                        rb.angularVelocity = Vector3.zero;
+                                    }
+                                }
+
+                                private Vector3 GetCameraRight(Camera playerCamera)
+                                {
+                                    Vector3 right = playerCamera.transform.right;
+                                    right.y = 0;
+                                    return right.normalized;
+                                }
+
+                                private Vector3 GetCameraForward(Camera playerCamera)
+                                {
+                                    Vector3 forward = playerCamera.transform.forward;
+                                    forward.y = 0;
+                                    return forward.normalized;
+                                }
+
+
+                                private void DoJump(InputAction.CallbackContext obj) //player can only jump when on the ground
+                                {
+                                    if (isGrounded())
+                                    {
+                                        direction += Vector3.up * jumpHeight;
+                                        GetComponent<Animator>().SetTrigger("jump");
+                                    }
+                                }
+
+                                private bool isGrounded()  // checks if player in on the ground
+
+                                {
+                                    Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
+                                    if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                            }
+                        
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</section>
 
+    
+            <!-- Win -->
+            <div id="collapseWin" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                        public class CrownPickup : Pickup
+                        {
+                            [SerializeField] private GameObject winCanvas;
+                            [SerializeField] private Button button;                     
+                            [SerializeField] AudioSource winAudio;
+                        
+                        
+                            public override void Activate(GameObject other) //this happens when player touches the crown
+                            {
+                                if (other.CompareTag("Player"))
+                                {
+                                    CollectionManager CollectionManager = other.GetComponent<CollectionManager>();
+                                    CollectionManager.CrownPickup.SetActive(false);
+                                    button.Select();
+                        
+                                    ScoreManager.Instance.TimerActive = false;
+                                    winCanvas.SetActive(true);
+                                    winAudio.Play();
+                                }
+                            }
+                        }
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/tricrown.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
+        </div>
+    </div>
 
-     <!-- Footer -->
-     <footer class=" text-center py-3">
+    
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="text-center py-3 ">
         <p>&copy; 2025 Esmée Veldhuizen🌸</p>
     </footer>
 
@@ -129,5 +319,6 @@ allowfullscreen>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
