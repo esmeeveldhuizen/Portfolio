@@ -139,11 +139,11 @@ pre {
     grid-template-rows: repeat(25, 1fr); 
     grid-gap: 1px;
     width: 99vw; 
-    height: 450px;
+    height: 530px;
+    background-color: rgb(59, 140, 160); 
 }
 
 .grid-item {
-    background-color: rgb(59, 140, 160); 
     /*background-color: transparent;  */
     width: 20px; 
     height: 20px; 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../sass/tandwiel.png">
-    <title>EV - JavaScript</title>
+    <title>EV - Dotbydot</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
                     <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
                     <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
                     <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
-                    <a class="dropdown-item text-white" href="javascript.html">Pixel Canvas</a>
+                    <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-white" href="jesterjack.html">JesterJack</a>
                     <a class="dropdown-item text-white" href="bubblepedia.html">Bubblepedia</a>
@@ -45,6 +45,174 @@
     </nav>
 
     <!-- hier de context -->
+      <!-- Hero Section -->
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/canvas/canv1.png'); background-size: cover; background-position: center;">
+        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative z-index-2">
+            <h1 class="display-3 fw-bold glow-text">Dot by dot</h1>
+            <p class="lead">A pixel art canvas made in ? weeks by me</p>
+        </div>
+    </section>
+
+    <!-- Over de game (Split layout) -->
+    <section class="game-info container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img src="../sass/placeholder.jpg" alt="Gameplay" class="img-fluid rounded shadow-lg game-img">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">A pixel art canvas!</h2>
+                <p>A fun and easy way to make your own pixel art! Pick a color, draw or erase pixels, and save your picture as a PNG. Perfect for small doodles or cool pixel creations!</p>
+           </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Grid -->
+    <section class="container py-5 text-center">
+        <h2 class="mb-4">Screenshots</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../sass/placeholder.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/canvas/canv2.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../sass/placeholder.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Code</h2>
+    
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Png</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Grid</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Draw</button>
+        </div>
+    
+        <div id="accordion">
+    
+            <!-- Jump -->
+            <div id="collapseJump" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                                saveBtn.addEventListener("click", () => {
+                                const canvas = document.createElement("canvas");
+                                const ctx = canvas.getContext("2d");
+                                const cellSize = 20; // zelfde als je .grid-item afmetingen
+
+                                canvas.width = columns * cellSize;
+                                canvas.height = rows * cellSize;
+
+                                const gridItems = document.querySelectorAll(".grid-item");
+
+                                gridItems.forEach((cell, i) => {
+                                    const col = i % columns;
+                                    const row = Math.floor(i / columns);
+                                    const color = window.getComputedStyle(cell).backgroundColor;
+
+                                    ctx.fillStyle = color;
+                                    ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+                                });
+
+                                const link = document.createElement("a");
+                                link.download = "dot-by-dot.png";
+                                link.href = canvas.toDataURL("image/png");
+                                link.click();
+                            });
+                    </code></pre>       
+            <!-- GIF -->
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-6">
+                <img src="../gifs/triplatform.gif" alt="Platform visual" class="img-fluid rounded shadow">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    
+            <!-- Star -->
+            <div id="collapseStar" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+                                        const rows = 20;
+                                        const columns = 30;
+
+                                        for (let i = 0; i < rows * columns; i++) {
+                                        const gridItem = document.createElement('div');
+                                        gridItem.className = 'grid-item';
+
+                                        gridItem.addEventListener("click", function () {
+                                            paint(gridItem);
+                                        });
+
+                                        gridItem.addEventListener("mouseover", function () {
+                                            if (isMouseDown) {
+                                                paint(gridItem);
+                                            }
+                                        });
+
+                                        gridContainer.appendChild(gridItem);
+                                    };
+                        
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+            <!-- Win -->
+            <div id="collapseWin" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <pre><code>
+
+                                        function paint(gridItem) {
+                                        if (currentTool === "pen") {
+                                            gridItem.style.backgroundColor = selectedColor;
+                                        } else if (currentTool === "eraser") {
+                                            gridItem.style.backgroundColor = "rgb(234, 234, 234)";
+                                        }
+                                    };
+                                        penBtn.addEventListener("click", () => {
+                                        currentTool = "pen";
+                                        penBtn.classList.add("selected");
+                                        eraserBtn.classList.remove("selected");
+                                    });
+
+                                    eraserBtn.addEventListener("click", () => {
+                                        currentTool = "eraser";
+                                        eraserBtn.classList.add("selected");
+                                        penBtn.classList.remove("selected");
+                                    });
+
+                                    colorBtn.addEventListener("click", () => {
+                                        colorPicker.click();
+                                    });
+
+                                    colorPicker.addEventListener("input", (e)=>{
+                                        selectedColor = e.target.value
+                                    });
+
+
+                    </code></pre>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/tricrown.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+        </div>
+    </section>
 
      <!-- Footer -->
      <footer class=" text-center py-3">
