@@ -42,7 +42,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/lostmother/mom.jpg'); background-size: cover; background-position: center;">
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/lostmother/mom8.png'); background-size: cover; background-position: center;">
         <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative z-index-2">
             <h1 class="display-3 fw-bold glow-text">Verloren Moeder</h1>
@@ -68,13 +68,13 @@
         <h2 class="mb-4">Screenshots</h2>
         <div class="row">
             <div class="col-md-4">
-                <img src="../images/lostmother/mom.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+                <img src="../images/lostmother/mom8.png" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
             </div>
             <div class="col-md-4">
-                <img src="../images/lostmother/mom.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+                <img src="../images/lostmother/mom7.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
             </div>
             <div class="col-md-4">
-                <img src="../images/lostmother/mom.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+                <img src="../images/lostmother/mom9.png" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
             </div>
         </div>
     </section>
@@ -84,9 +84,9 @@
         <h2 class="mb-4 text-center">Code</h2>
     
         <div class="text-center mb-4">
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Platform</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Player</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Crown</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Environment</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">!Walking</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Disappearance</button>
         </div>
     
         <div id="accordion">
@@ -94,48 +94,9 @@
             <!-- Jump -->
             <div id="collapseJump" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
-                    <pre><code>
-                public class MovingPlatform : MonoBehaviour
-            {
-                [SerializeField] private float speed = 4f;
-                [SerializeField] private int startingPoint;
-                [SerializeField] private Transform[] wayPoints;
-                private int i;
-
-                void Start()
-                {
-                    transform.position = wayPoints[startingPoint].position;
-                }
-
-                void Update() //platform keeps looping so it doesn't stop
-                {
-                    if (Vector3.Distance(transform.position, wayPoints[i].position) < 0.02f)
-                    {
-                        i++;
-                        if (i == wayPoints.Length)
-                        {
-                            i = 0;
-                        }
-                    }
-                    transform.position = Vector3.MoveTowards(transform.position, wayPoints[i].position, speed * Time.deltaTime);
-                }
-
-                void OnCollisionStay(Collision collision) //platform parents to the player so you don't have to walk with it
-                {
-                    if (collision.gameObject.CompareTag("Player"))
-                    {
-                        collision.gameObject.transform.parent = transform;
-                    }
-                }
-                void OnCollisionExit(Collision collision) //platform unparent from player
-                {
-                    if (collision.gameObject.CompareTag("Player"))
-                    {
-                        collision.gameObject.transform.parent = null;
-                    }
-                }
-            }
-                    </code></pre>       
+ <div style="width: 100%; max-width: 100%; height: 400px; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+            <img src="../images/lostmother/mom2.png" alt="Screenshot 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+        </div>       
             <!-- GIF -->
             <div class="row justify-content-center mt-3">
               <div class="col-md-6">
@@ -148,155 +109,32 @@
     
             <!-- Star -->
             <div id="collapseStar" class="collapse" data-parent="#accordion">
-                <div class="bg-primary p-4 rounded mb-4 text-white">
-                    <pre><code>
-                            public class PlayerController : MonoBehaviour
-                            {
-                                private Controls controls;
-                                private InputAction move;
+    <div class="bg-primary p-4 rounded mb-4 text-white">
 
-                                private Rigidbody rb;
+        <!-- Aangepaste afbeelding zonder achtergrondkleur -->
+        <div style="width: 100%; max-width: 100%; height: 400px; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+            <img src="../images/lostmother/mom4.png" alt="Screenshot 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+        </div>
 
-                                [SerializeField] private float speed = 1.0f;
-                                [SerializeField] private float jumpHeight = 5.0f;
-                                [SerializeField] private float maxSpeed = 5.0f;
-
-                                private Vector3 direction = Vector3.zero;
-
-                                [SerializeField] Camera playerCamera;
-
-                                private void Awake()
-                                {
-                                    rb = GetComponent<Rigidbody>();
-                                    controls = new Controls();
-                                }
-
-                                private void OnEnable() //enables jumping and walking 
-                                {
-                                    controls.NormalControls.Jump.started += DoJump;
-                                    move = controls.NormalControls.Move;
-                                    controls.NormalControls.Enable();
-                                }
-
-                                private void OnDisable() //disables jumping and walking
-                                {
-                                    controls.NormalControls.Jump.started -= DoJump;
-                                    controls.NormalControls.Disable();
-                                }
-
-                                private void FixedUpdate()
-                                {
-                                    direction += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * speed;
-                                    direction += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * speed;
-
-                                    rb.AddForce(direction, ForceMode.Impulse);
-                                    direction = Vector3.zero;
-
-                                    if (rb.velocity.y < 0f)
-                                    {
-                                        rb.velocity -= Physics.gravity.y * Time.fixedDeltaTime * Vector3.down;
-                                    }
-
-                                    Vector3 horizontalVelocity = rb.velocity;
-                                    horizontalVelocity.y = 0;
-                                    if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
-                                    {
-                                        rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
-                                    }
-
-                                    LookAt();
-                                }
-
-                                private void LookAt() //makes the camera follow the player
-                                {
-                                    Vector3 lookDirection = rb.velocity;
-                                    lookDirection.y = 0f;
-
-                                    if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && lookDirection.sqrMagnitude > 0.1f)
-                                    {
-                                        this.rb.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-                                    }
-                                    else
-                                    {
-                                        rb.angularVelocity = Vector3.zero;
-                                    }
-                                }
-
-                                private Vector3 GetCameraRight(Camera playerCamera)
-                                {
-                                    Vector3 right = playerCamera.transform.right;
-                                    right.y = 0;
-                                    return right.normalized;
-                                }
-
-                                private Vector3 GetCameraForward(Camera playerCamera)
-                                {
-                                    Vector3 forward = playerCamera.transform.forward;
-                                    forward.y = 0;
-                                    return forward.normalized;
-                                }
-
-
-                                private void DoJump(InputAction.CallbackContext obj) //player can only jump when on the ground
-                                {
-                                    if (isGrounded())
-                                    {
-                                        direction += Vector3.up * jumpHeight;
-                                        GetComponent<Animator>().SetTrigger("jump");
-                                    }
-                                }
-
-                                private bool isGrounded()  // checks if player in on the ground
-
-                                {
-                                    Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
-                                    if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
-                                    {
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        return false;
-                                    }
-                                }
-                            }
-                        
-                    </code></pre>
-                    <div class="row justify-content-center mt-3">
-                        <div class="col-md-6">
-                    <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
-                </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+                <img src="../gifs/triplayer.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
             </div>
         </div>
     </div>
+</div>
+
 
     
             <!-- Win -->
             <div id="collapseWin" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
-                    <pre><code>
-                        public class CrownPickup : Pickup
-                        {
-                            [SerializeField] private GameObject winCanvas;
-                            [SerializeField] private Button button;                     
-                            [SerializeField] AudioSource winAudio;
-                        
-                        
-                            public override void Activate(GameObject other) //this happens when player touches the crown
-                            {
-                                if (other.CompareTag("Player"))
-                                {
-                                    CollectionManager CollectionManager = other.GetComponent<CollectionManager>();
-                                    CollectionManager.CrownPickup.SetActive(false);
-                                    button.Select();
-                        
-                                    ScoreManager.Instance.TimerActive = false;
-                                    winCanvas.SetActive(true);
-                                    winAudio.Play();
-                                }
-                            }
-                        }
-                    </code></pre>
+ <div style="width: 100%; max-width: 100%; height: 400px; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+            <img src="../images/lostmother/mom5.png" alt="Screenshot 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+        </div>
+ <div style="width: 100%; max-width: 100%; height: 400px; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+            <img src="../images/lostmother/mom6.png" alt="Screenshot 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+        </div>
                     <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
                     <img src="../gifs/tricrown.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
