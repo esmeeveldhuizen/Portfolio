@@ -11972,13 +11972,13 @@ pre {
 }
 
 .contact-icons .contact-item i {
-  color: #2C3E50; /* Gebruik de tekstkleur die je eerder hebt gedefinieerd */
+  color: rgb(59, 140, 160);
   transition: color 0.3s ease; /* Voeg een overgang toe voor een vloeiende kleurverandering */
 }
 
 /* Hover effect: de icoontjes worden dezelfde kleur als de tekst */
 .contact-icons .contact-item i:hover {
-  color: #A9CCE3; /* Dit zorgt ervoor dat de hoverkleur hetzelfde is als de tekstkleur */
+  color: #A9CCE3;
 }
 
 .grid {
@@ -12067,4 +12067,24 @@ pre {
   background-color: #3b5168;
   color: white;
   border-color: #3b5168;
+}
+
+.copy-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(51, 51, 51, 0.7411764706);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 9999;
+}
+
+.copy-toast.show {
+  opacity: 1;
 }

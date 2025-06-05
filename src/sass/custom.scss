@@ -121,13 +121,13 @@ pre {
 }
 
 .contact-icons .contact-item i {
-    color: $primary;  /* Gebruik de tekstkleur die je eerder hebt gedefinieerd */
+    color: rgb(59, 140, 160);  
     transition: color 0.3s ease;  /* Voeg een overgang toe voor een vloeiende kleurverandering */
 }
 
 /* Hover effect: de icoontjes worden dezelfde kleur als de tekst */
 .contact-icons .contact-item i:hover {
-    color: $textcolor;  /* Dit zorgt ervoor dat de hoverkleur hetzelfde is als de tekstkleur */
+    color: $textcolor;  
 }
 
 
@@ -223,3 +223,26 @@ pre {
     color: white;               // tekstkleur aanpassen indien nodig
     border-color: #3b5168;      // randkleur als je die ook mee wilt
   }
+
+
+
+//discord
+    .copy-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333333bd;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+        }
