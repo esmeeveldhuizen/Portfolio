@@ -1,6 +1,5 @@
 let currentTool = "pen";
 let selectedColor = "black";
-let isMouseDown = false;
 
 const penBtn = document.getElementById("penBtn");
 const eraserBtn = document.getElementById("eraserBtn");
@@ -81,15 +80,12 @@ black.addEventListener("click", () => {
     eraserBtn.classList.remove("selected");
 });
 
-document.addEventListener("mousedown", () => isMouseDown = true);
-document.addEventListener("mouseup", () => isMouseDown = false);
-
 
 function paint(gridItem) {
     if (currentTool === "pen") {
         gridItem.style.backgroundColor = selectedColor;
     } else if (currentTool === "eraser") {
-        gridItem.style.backgroundColor = "rgb(59, 140, 160)";
+        gridItem.style.backgroundColor = "#3E5F70";
     }
 };
 
@@ -105,11 +101,10 @@ for (let i = 0; i < rows * columns; i++) {
         paint(gridItem);
     });
 
-    gridItem.addEventListener("mouseover", function () {
-        if (isMouseDown) {
-            paint(gridItem);
-        }
-    });
+   gridItem.addEventListener("mouseover", function () {
+    paint(gridItem);
+});
+
 
     gridContainer.appendChild(gridItem);
 };
