@@ -134,20 +134,28 @@ pre {
 
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(70, 1fr); 
-    grid-template-rows: repeat(25, 1fr); 
-    grid-gap: 1px;
-    width: 99vw; 
-    height: 530px;
-    background-color: rgb(59, 140, 160); 
+  display: grid;
+  grid-template-columns: repeat(70, 1fr); /* altijd 70 kolommen */
+  grid-template-rows: repeat(25, 1fr);    /* altijd 25 rijen */
+  gap: 1px;
+  width: 100%;
+  max-width: 100vw;                       /* nooit breder dan scherm */
+  margin: 0 auto;
+  background-color: rgb(59, 140, 160);
+  position: relative;
+  z-index: 1;
 }
 
 .grid-item {
-    background-color: #3e5f70;  
-    width: 20px; 
-    height: 20px; 
+  background-color: #3e5f70;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;    /* aspect-ratio 1:1 via padding trick */
 }
+
+
+
+
 
 #row {
   display: flex;
@@ -260,3 +268,61 @@ pre {
 main {
     flex: 1;
 }
+
+
+
+
+#row {
+  display: flex;
+  flex-direction: column; /* op mobiel: tools boven kleuren */
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#tools {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#tools button {
+  font-size: 1.2rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+}
+
+#colors {
+  display: flex;
+  flex-wrap: wrap;   /* laat knoppen op de volgende regel springen */
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+#colors button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.grid-text {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  #row {
+    flex-direction: row; /* naast elkaar op desktop */
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+/* Tekst blijft boven grid */
+.overlay-text {
+  z-index: 2;
+  pointer-events: none; /* zodat klikken naar grid gaat */
+}
+
