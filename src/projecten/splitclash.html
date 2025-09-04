@@ -73,7 +73,7 @@
         <h2 class="mb-4 text-center">Code</h2>
     
         <div class="text-center mb-4">
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Minion health</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Touchscreen</button>
             <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Minion attack</button>
             <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Card spawn</button>
         </div>
@@ -85,71 +85,118 @@
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                     <div class="row justify-content-center mt-3">
               <div class="col-md-6">
-                <img src="../gifs/starup.gif" alt="Platform visual" class="img-fluid rounded shadow">
+                <img src="../gifs/splittouch (2).gif" alt="Platform visual" class="img-fluid rounded shadow">
               </div>
             </div>
                     <pre><code>
-public class UpAndDownMovement : MonoBehaviour
+    public class Touchscreen : MonoBehaviour
 {
-private LogitechGSDK.DIJOYSTATE2ENGINES rec;
+    private Dictionary<int, GameObject> activeDrags = new Dictionary<int, GameObject>();
+    private Camera cam;
+    [SerializeField] private float spawnLine;
 
-private float speed = 5; // how fast you move up and down
+    private bool mouseDragging = false;
+    private GameObject mouseDragObject;
 
-void Start()
-{
-    transform.position = Vector3.zero;
-}
+    private TouchPlacer touchPlacer;
 
-void Update()
-{
-    rec = LogitechGSDK.LogiGetStateUnity(0);
-    LogitechGSDK.LogiControllerPropertiesData actualProperties = new LogitechGSDK.LogiControllerPropertiesData();
-    LogitechGSDK.LogiGetCurrentControllerProperties(0, ref actualProperties);
-
-    GetButtons(); // Check for button input
-}
-
-void GetButtons()
-{
-    for (byte i = 0; i < 128; i++) // go through all 128 button inputs
+    void Start()
     {
-        if (rec.rgbButtons[i] == 128) // Check if button is pressed
+        cam = Camera.main;
+        touchPlacer = FindFirstObjectByType<TouchPlacer>();
+    }
+
+    void OnFingerDown(Finger finger) //place finger on screen
+    {
+        Vector2 screenPos = finger.screenPosition;
+        Ray ray = cam.ScreenPointToRay(screenPos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Gear3(i);
-            Gear4(i);
+            GameObject originalCard = hit.collider.gameObject;
+            if (originalCard.GetComponent<Card>())
+            {
+                Card card = originalCard.GetComponent<Card>();
+                bool _isRightSide = originalCard.layer == LayerMask.NameToLayer("rotate");
+
+            if (_isRightSide)
+            {
+                if (card != null && CoinManager.DefendersCoins >= card.CardCost)
+                {
+                    GameObject cardCopy = Instantiate(originalCard, originalCard.transform.position, originalCard.transform.rotation);
+                    cardCopy.tag = "Untagged";
+
+                    CoinManager.LoseDECoins(card.CardCost);
+
+                    activeDrags[finger.index] = cardCopy;
+                }
+            }            
+        }
+            else if (originalCard.GetComponent<GridItemPlacer>())
+            {
+                GridItemPlacer _item = originalCard.GetComponent<GridItemPlacer>();
+                bool _isRightSide = _item.IsRightSide;
+                int _itemID = _item.ItemToPlace;
+                int _prize = touchPlacer.ReturnPrize(_itemID);
+                if (_isRightSide)
+                {
+
+                if (_item != null && CoinManager.DefendersCoins >= _prize)
+                {
+                    GameObject _itemCopy = Instantiate(originalCard, originalCard.transform.position, originalCard.transform.rotation);
+                    _itemCopy.tag = "Untagged";
+                    _itemCopy.GetComponent<Collider>().isTrigger = true;
+
+                    _item.GrabItem();
+
+                    CoinManager.LoseDECoins(_prize);
+
+                    activeDrags[finger.index] = _itemCopy;
+                }
+              }               
+            }
+          }
+        }
+
+    void OnFingerMove(Finger finger) //finger moving across screen
+    {
+        if (activeDrags.TryGetValue(finger.index, out GameObject draggedCard))
+        {
+            Vector2 screenPos = finger.screenPosition;
+            float z = cam.WorldToScreenPoint(draggedCard.transform.position).z;
+            Vector3 worldPos = cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, z));
+
+            draggedCard.transform.position = worldPos;
         }
     }
-}
 
+    void OnFingerUp(Finger finger) //finger releasing screen
+    {
+        if (activeDrags.TryGetValue(finger.index, out GameObject draggedCard))
+        {
+            Vector3 spawnPos = draggedCard.transform.position;
 
-public bool Gear3(byte button14)
-{
-    if (button14 == 14)
-    {
-    // Move the ship upwards based on speed and delta time
-    transform.position = new Vector3(transform.position.x, (transform.position.y + (Time.deltaTime * speed)), transform.position.z);
-    return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+            if (draggedCard.GetComponent<Card>())
+            {
+                Card card = draggedCard.GetComponent<Card>();
+                if (card != null)
+                {
+                    card.OnPlay(spawnPos);
+                }
+            }
+            else if (draggedCard.GetComponent<GridItemPlacer>())
+            {
+                GridItemPlacer _item = draggedCard.GetComponent<GridItemPlacer>();
+                if (_item != null)
+                {
+                    _item.SpawnItem(spawnPos);
+                }
+            }
 
-public bool Gear4(int button15)
-{
-    if (button15 == 15)
-    {
-    // Move the ship down based on speed and delta time
-    transform.position = new Vector3(transform.position.x, (transform.position.y - (Time.deltaTime * speed)), transform.position.z);
-    return true;
+            Destroy(draggedCard);
+            activeDrags.Remove(finger.index);
+        }
     }
-    else
-    {
-        return false;
-    }
-}
-}
                     </code></pre>       
             <!-- GIF -->
             
@@ -162,57 +209,141 @@ public bool Gear4(int button15)
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                      <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
-                    <img src="../gifs/starrotate.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                    <img src="../gifs/splitattack.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
                     <pre><code>
-                public float maxAngularVelocity = 30;
-                public float Torque = 0.5f;
+                public class MinionAttack : MonoBehaviour
+             {
+                public MinionScriptableObject MDamageData;
+                public MinionScriptableObject MAttackAudio;
 
-                [SerializeField] private float minTurnSpeed = -2;
-                [SerializeField] private float maxTurnSpeed = 1;
+                private float coolDown = 2;
+                private float reload = 2;
 
-                private Rigidbody rigidbody;
+                private AudioSource audioSource;
 
-                [SerializeField] private const float DeadzoneMin = -1f;
-                [SerializeField] private const float DeadzoneMax = 1f;
+                private Animator animator;
 
-                [SerializeField] private GameObject wheel;
-                public float rotationSpeed = 100f; 
-                private float currentWheelRotation = 0f; 
+                [SerializeField] private float radius;
+                [SerializeField] private LayerMask layerMask;
 
-                void FixedUpdate()
+                [SerializeField] GameObject projectilePrefab;
+
+                [SerializeField] GameObject lWall;
+                [SerializeField] GameObject rWall;
+
+
+                MinionMovement movement;
+
+
+                private void Start()
                 {
-                    rigidbody.angularVelocity = Vector3.up * Mathf.Clamp(rigidbody.angularVelocity.y, minTurnSpeed, maxTurnSpeed);
+                    animator = GetComponent<Animator>();
+                    movement = FindFirstObjectByType<MinionMovement>();
+                    audioSource = GetComponent<AudioSource>();
                 }
-                
-                //Called by the WheelInputSubject to update the steering wheel input
-                public void OnWheelInput(float input)
+                void Update()
                 {
-                    Rotate(input);
-                }
-                  
-                
-                //Rotate the ridgidbody according to the input
-                private void Rotate(float NormalizedInput)
-                {
-                    if (NormalizedInput > DeadzoneMin && NormalizedInput < DeadzoneMax)
+                    coolDown -= Time.deltaTime;
+                    if (CompareTag("Range"))
                     {
-                        NormalizedInput = 0f;
+                        RangeMinion();
                     }
-                
-                    rigidbody.AddRelativeTorque(Vector3.up * Torque * NormalizedInput, ForceMode.Force);
-                
-                    currentWheelRotation += -NormalizedInput * rotationSpeed * Time.deltaTime;
-                    currentWheelRotation = Mathf.Clamp(currentWheelRotation, -450f, 450f);
-                
-                    wheel.transform.localRotation = Quaternion.Euler(currentWheelRotation, 0, 0);
                 }
-                
-                //Apply the passive force feedback to the steering wheel
-                private void ApplyPasiveForceFeedback()
+
+                private void OnCollisionStay(Collision collision)
                 {
-                    LogitechGSDK.LogiPlaySpringForce(0, Offset, Saturation, Coefficient);
+                    if (collision.collider.CompareTag("Damageable"))
+                    {
+                        if (coolDown <= 0)
+                        {
+                            collision.gameObject.GetComponent<Wall>().TakeDamage(MDamageData.MDamage);
+                            PlayAudio();
+                            if (animator != null) animator.SetTrigger("Attack");
+                            coolDown = 2;
+                        }
+                    }
+            
+
+                private void RangeMinion()
+                {
+                    if (gameObject.layer == LayerMask.NameToLayer("enemyL")) //right minion attacking left minion
+                    {
+                        Collider[] _targets = Physics.OverlapSphere(transform.position, radius, layerMask);
+
+                        Transform _nearestTarget = GetTarget(_targets);
+
+                        if (_nearestTarget != null && rWall.layer == LayerMask.NameToLayer("TargetsR"))
+                        {
+                            movement.IsWalking = false;
+
+                            if (coolDown <= 0)
+                            {
+                                PlayAudio();
+                                Attacking(_nearestTarget);
+                                coolDown = reload;
+                            }
+
+                        }
+                        else if (_nearestTarget == null)
+                        {
+                            movement.IsWalking = true;
+                        }
+                    }
+
+
+                    else if (gameObject.layer == LayerMask.NameToLayer("enemyR")) //left minion attacking right minion
+                    {
+                        Collider[] _targets = Physics.OverlapSphere(transform.position, radius, layerMask);
+
+                        Transform _nearestTarget = GetTarget(_targets);
+
+                        if (_nearestTarget != null && lWall.layer == LayerMask.NameToLayer("TargetsL"))
+                        {
+                            movement.IsWalking = false;
+
+                            if (coolDown <= 0)
+                            {
+                                PlayAudio();
+                                Attacking(_nearestTarget);
+                                coolDown = reload;
+                            }
+
+                        }
+                        else if (_nearestTarget == null) //range minion only walks when not attacking
+                        {
+                            movement.IsWalking = true;
+                        }
+                    }
+                }
+
+
+
+                private Transform GetTarget(Collider[] _targets)
+                {
+                    float _minDistance = Mathf.Infinity;
+                    Transform _nearest = null;
+
+                    foreach (var _target in _targets)
+                    {
+                        float _dist = Vector3.Distance(transform.position, _target.transform.position);
+                        if (_dist < _minDistance)
+                        {
+                            _minDistance = _dist;
+                            _nearest = _target.transform;
+                        }
+                    }
+                    return _nearest;
+                }
+
+                private void Attacking(Transform _targets)
+                {
+                    GameObject _projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+                    Projectile _projectileScript = _projectile.GetComponent<Projectile>();
+
+                    _projectileScript.SetTarget(_targets);
+                    _projectileScript.Damage = MDamageData.MDamage;
                 }
                     </code></pre>
                    
@@ -225,59 +356,76 @@ public bool Gear4(int button15)
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                     <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
-                    <img src="../gifs/stardeath.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                    <img src="../gifs/splitsplitspawn.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
                     <pre><code>
-                            private void NoFuelLeft()
+                            public class Card : MonoBehaviour
+                        {
+                            [Range(1f, 20f)]
+                            public int CardCost;
+
+                            [SerializeField] private GameObject minionPrefab;
+                            [SerializeField] private MinionScriptableObject costData;
+
+                            [SerializeField] private float spawnLine;
+
+
+                            private bool hasBeenPlayed = false;
+
+                            public void OnPlay(Vector3 _spawnPosition)
                             {
-                                if (Fuel <= 0.01)
+
+                                if (_spawnPosition.z < 4.3f || _spawnPosition.z > 6.2f)
                                 {
-                                    sosCanvas.SetActive(true);
-                                    rb.isKinematic = true;
+
+                                    if (gameObject.layer == LayerMask.NameToLayer("rotate"))
+                                    {
+                                        CoinManager.AddDECoins(costData.MCost);
+                                    }
+                                    if (gameObject.layer == LayerMask.NameToLayer("Default"))
+                                    {
+                                        CoinManager.AddATCoins(costData.MCost);
+                                    }
+
+                                    hasBeenPlayed = false; 
+                                    Destroy(gameObject);
+                                    return;
+                                }
+
+                                if (hasBeenPlayed) return;
+                                hasBeenPlayed = true;
+                                
+                                {//it checks if the card isn't too close to the enemy's side to spawn
+                                if (gameObject.layer == LayerMask.NameToLayer("rotate"))
+                                    if (_spawnPosition.z < spawnLine) { _spawnPosition.z = spawnLine; } 
+                                }
+                                if (gameObject.layer == LayerMask.NameToLayer("Default"))
+                                {
+                                    if (_spawnPosition.z > spawnLine) { _spawnPosition.z = spawnLine; }
+                                }
+
+
+                                if (_spawnPosition.x > -3.404f) _spawnPosition.x = -3.404f;
+                                if (_spawnPosition.x < -5.147f) _spawnPosition.x = -5.147f;
+
+                                {
+                                    if (minionPrefab != null && hasBeenPlayed)
+                                    {
+                                        _spawnPosition.y = 0.1f; 
+                                        if (gameObject.layer == LayerMask.NameToLayer("rotate"))
+                                        {
+                                            Instantiate(minionPrefab, _spawnPosition, Quaternion.Euler(0, 180, 0));
+                                        }
+                                        else
+                                        {
+                                            Instantiate(minionPrefab, _spawnPosition, Quaternion.identity);
+                                        }
+
+                                    }
                                 }
                             }
-
-                            private void PressedX(int button) //when button pressed the fade in and timer start
-                            {
-                                if (button == 0 && Fuel < 1)
-                                {
-                                    StartCoroutine(FadeIn());
-                                    StartCoroutine(WaitASec());
-                                }
-                            }
-
-                            IEnumerator FadeIn() //makes the inside sphere black 
-                            {
-                                Renderer rend = sphere.transform.GetComponent<Renderer>();
-
-                                for (float i = 0; i <= 1; i += Time.deltaTime)
-                                {
-                                    rend.material.color = new Color(0, 0, 0, i);
-                                    yield return null;
-                                }
-                            }
-
-                            IEnumerator FadeOut() //makes the inside sphere transparant
-                            {
-                                Renderer rend = sphere.transform.GetComponent<Renderer>();
-
-                                for (float i = 1; i >= 0; i -= Time.deltaTime)
-                                {
-                                    rend.material.color = new Color(0, 0, 0, i);
-                                    yield return null;
-                                }
-                            }
-
-                            IEnumerator WaitASec() //a small timer before the rest happens
-                            {
-                                yield return new WaitForSeconds(1.5f);
-                                transform.position = bigShip.transform.position;
-                                StartCoroutine(FadeOut());
-                                Fuel = 100;
-                                sosCanvas.SetActive(false);
-                                rb.isKinematic = false;
-                            }
+                        }
                     </code></pre>
                     
         </div>
