@@ -5,9 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../sass/tandwiel.png">
     <title>EV - Star Delivery</title>
+
+    <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+          
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 <body> 
 
@@ -54,13 +69,13 @@
     <section class="game-info container py-5">
         <div class="row align-items-center">
             <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
-  <iframe 
-    src="https://www.youtube.com/embed/SkHtUyeHaLQ?si=SrgOhFnNP-dBZdOz"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
+                <iframe 
+                    src="https://www.youtube.com/embed/SkHtUyeHaLQ?si=SrgOhFnNP-dBZdOz"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
             <div class="col-md-6">
                 <h2 class="mb-4">Deliver through space in VR!</h2>
                 <p>Step into the shoes of a space delivery driver, where you'll navigate through the stars and planets to deliver packages on time. With the immersive power of a racing seat and the Quest 3 VR headset, you're in for an exhilarating adventure. Race against the clock, dodge asteroids, and conquer challenging space routes, all while experiencing an ultra-realistic VR experience. Can you become the fastest, most reliable space delivery driver in the galaxy?</p>
@@ -68,7 +83,8 @@
         </div>
     </section>
 
- <section class="container py-5">
+    <!-- Code sectie -->
+    <section class="container py-5">
         <h2 class="mb-4 text-center">Code</h2>
     
         <div class="text-center mb-4">
@@ -78,215 +94,191 @@
         </div>
     
         <div id="accordion">
-    
+
             <!-- Jump -->
             <div id="collapseJump" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                     <div class="row justify-content-center mt-3">
-              <div class="col-md-6">
-                <img src="../gifs/starup.gif" alt="Platform visual" class="img-fluid rounded shadow">
-              </div>
-            </div>
-                    <pre><code>
+                        <div class="col-md-6">
+                            <img src="../gifs/starup.gif" alt="Platform visual" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <pre><code class="language-cs">
 public class UpAndDownMovement : MonoBehaviour
 {
-private LogitechGSDK.DIJOYSTATE2ENGINES rec;
+    private LogitechGSDK.DIJOYSTATE2ENGINES rec;
+    private float speed = 5; // how fast you move up and down
 
-private float speed = 5; // how fast you move up and down
-
-void Start()
-{
-    transform.position = Vector3.zero;
-}
-
-void Update()
-{
-    rec = LogitechGSDK.LogiGetStateUnity(0);
-    LogitechGSDK.LogiControllerPropertiesData actualProperties = new LogitechGSDK.LogiControllerPropertiesData();
-    LogitechGSDK.LogiGetCurrentControllerProperties(0, ref actualProperties);
-
-    GetButtons(); // Check for button input
-}
-
-void GetButtons()
-{
-    for (byte i = 0; i < 128; i++) // go through all 128 button inputs
+    void Start()
     {
-        if (rec.rgbButtons[i] == 128) // Check if button is pressed
+        transform.position = Vector3.zero;
+    }
+
+    void Update()
+    {
+        rec = LogitechGSDK.LogiGetStateUnity(0);
+        LogitechGSDK.LogiControllerPropertiesData actualProperties = new LogitechGSDK.LogiControllerPropertiesData();
+        LogitechGSDK.LogiGetCurrentControllerProperties(0, ref actualProperties);
+
+        GetButtons(); // Check for button input
+    }
+
+    void GetButtons()
+    {
+        for (byte i = 0; i < 128; i++) // go through all 128 button inputs
         {
-            Gear3(i);
-            Gear4(i);
+            if (rec.rgbButtons[i] == 128) // Check if button is pressed
+            {
+                Gear3(i);
+                Gear4(i);
+            }
         }
     }
-}
 
-
-public bool Gear3(byte button14)
-{
-    if (button14 == 14)
+    public bool Gear3(byte button14)
     {
-    // Move the ship upwards based on speed and delta time
-    transform.position = new Vector3(transform.position.x, (transform.position.y + (Time.deltaTime * speed)), transform.position.z);
-    return true;
+        if (button14 == 14)
+        {
+            transform.position = new Vector3(transform.position.x, (transform.position.y + (Time.deltaTime * speed)), transform.position.z);
+            return true;
+        }
+        return false;
     }
-    else
+
+    public bool Gear4(int button15)
     {
+        if (button15 == 15)
+        {
+            transform.position = new Vector3(transform.position.x, (transform.position.y - (Time.deltaTime * speed)), transform.position.z);
+            return true;
+        }
         return false;
     }
 }
-
-public bool Gear4(int button15)
-{
-    if (button15 == 15)
-    {
-    // Move the ship down based on speed and delta time
-    transform.position = new Vector3(transform.position.x, (transform.position.y - (Time.deltaTime * speed)), transform.position.z);
-    return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-}
-                    </code></pre>       
-            <!-- GIF -->
-            
-        
-          </div>
-        </div>
+</code></pre>       
+                </div>
+            </div>
     
             <!-- Star -->
             <div id="collapseStar" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
-                     <div class="row justify-content-center mt-3">
+                    <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
-                    <img src="../gifs/starrotate.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                            <img src="../gifs/starrotate.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                        </div>
+                    </div>
+                    <pre><code class="language-cs">
+public float maxAngularVelocity = 30;
+public float Torque = 0.5f;
+
+[SerializeField] private float minTurnSpeed = -2;
+[SerializeField] private float maxTurnSpeed = 1;
+
+private Rigidbody rigidbody;
+
+[SerializeField] private const float DeadzoneMin = -1f;
+[SerializeField] private const float DeadzoneMax = 1f;
+
+[SerializeField] private GameObject wheel;
+public float rotationSpeed = 100f; 
+private float currentWheelRotation = 0f; 
+
+void FixedUpdate()
+{
+    rigidbody.angularVelocity = Vector3.up * Mathf.Clamp(rigidbody.angularVelocity.y, minTurnSpeed, maxTurnSpeed);
+}
+
+public void OnWheelInput(float input)
+{
+    Rotate(input);
+}
+                  
+private void Rotate(float NormalizedInput)
+{
+    if (NormalizedInput > DeadzoneMin && NormalizedInput < DeadzoneMax)
+    {
+        NormalizedInput = 0f;
+    }
+
+    rigidbody.AddRelativeTorque(Vector3.up * Torque * NormalizedInput, ForceMode.Force);
+
+    currentWheelRotation += -NormalizedInput * rotationSpeed * Time.deltaTime;
+    currentWheelRotation = Mathf.Clamp(currentWheelRotation, -450f, 450f);
+
+    wheel.transform.localRotation = Quaternion.Euler(currentWheelRotation, 0, 0);
+}
+
+private void ApplyPasiveForceFeedback()
+{
+    LogitechGSDK.LogiPlaySpringForce(0, Offset, Saturation, Coefficient);
+}
+</code></pre>
                 </div>
             </div>
-                    <pre><code>
-                public float maxAngularVelocity = 30;
-                public float Torque = 0.5f;
-
-                [SerializeField] private float minTurnSpeed = -2;
-                [SerializeField] private float maxTurnSpeed = 1;
-
-                private Rigidbody rigidbody;
-
-                [SerializeField] private const float DeadzoneMin = -1f;
-                [SerializeField] private const float DeadzoneMax = 1f;
-
-                [SerializeField] private GameObject wheel;
-                public float rotationSpeed = 100f; 
-                private float currentWheelRotation = 0f; 
-
-                void FixedUpdate()
-                {
-                    rigidbody.angularVelocity = Vector3.up * Mathf.Clamp(rigidbody.angularVelocity.y, minTurnSpeed, maxTurnSpeed);
-                }
-                
-                //Called by the WheelInputSubject to update the steering wheel input
-                public void OnWheelInput(float input)
-                {
-                    Rotate(input);
-                }
-                  
-                
-                //Rotate the ridgidbody according to the input
-                private void Rotate(float NormalizedInput)
-                {
-                    if (NormalizedInput > DeadzoneMin && NormalizedInput < DeadzoneMax)
-                    {
-                        NormalizedInput = 0f;
-                    }
-                
-                    rigidbody.AddRelativeTorque(Vector3.up * Torque * NormalizedInput, ForceMode.Force);
-                
-                    currentWheelRotation += -NormalizedInput * rotationSpeed * Time.deltaTime;
-                    currentWheelRotation = Mathf.Clamp(currentWheelRotation, -450f, 450f);
-                
-                    wheel.transform.localRotation = Quaternion.Euler(currentWheelRotation, 0, 0);
-                }
-                
-                //Apply the passive force feedback to the steering wheel
-                private void ApplyPasiveForceFeedback()
-                {
-                    LogitechGSDK.LogiPlaySpringForce(0, Offset, Saturation, Coefficient);
-                }
-                    </code></pre>
-                   
-        </div>
-    </div>
-
     
-            <!-- death -->
+            <!-- Death -->
             <div id="collapseWin" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                     <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
-                    <img src="../gifs/stardeath.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                            <img src="../gifs/stardeath.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                        </div>
+                    </div>
+                    <pre><code class="language-cs">
+private void NoFuelLeft()
+{
+    if (Fuel <= 0.01)
+    {
+        sosCanvas.SetActive(true);
+        rb.isKinematic = true;
+    }
+}
+
+private void PressedX(int button)
+{
+    if (button == 0 && Fuel < 1)
+    {
+        StartCoroutine(FadeIn());
+        StartCoroutine(WaitASec());
+    }
+}
+
+IEnumerator FadeIn()
+{
+    Renderer rend = sphere.transform.GetComponent<Renderer>();
+
+    for (float i = 0; i <= 1; i += Time.deltaTime)
+    {
+        rend.material.color = new Color(0, 0, 0, i);
+        yield return null;
+    }
+}
+
+IEnumerator FadeOut()
+{
+    Renderer rend = sphere.transform.GetComponent<Renderer>();
+
+    for (float i = 1; i >= 0; i -= Time.deltaTime)
+    {
+        rend.material.color = new Color(0, 0, 0, i);
+        yield return null;
+    }
+}
+
+IEnumerator WaitASec()
+{
+    yield return new WaitForSeconds(1.5f);
+    transform.position = bigShip.transform.position;
+    StartCoroutine(FadeOut());
+    Fuel = 100;
+    sosCanvas.SetActive(false);
+    rb.isKinematic = false;
+}
+</code></pre>
                 </div>
             </div>
-                    <pre><code>
-                            private void NoFuelLeft()
-                            {
-                                if (Fuel <= 0.01)
-                                {
-                                    sosCanvas.SetActive(true);
-                                    rb.isKinematic = true;
-                                }
-                            }
-
-                            private void PressedX(int button) //when button pressed the fade in and timer start
-                            {
-                                if (button == 0 && Fuel < 1)
-                                {
-                                    StartCoroutine(FadeIn());
-                                    StartCoroutine(WaitASec());
-                                }
-                            }
-
-                            IEnumerator FadeIn() //makes the inside sphere black 
-                            {
-                                Renderer rend = sphere.transform.GetComponent<Renderer>();
-
-                                for (float i = 0; i <= 1; i += Time.deltaTime)
-                                {
-                                    rend.material.color = new Color(0, 0, 0, i);
-                                    yield return null;
-                                }
-                            }
-
-                            IEnumerator FadeOut() //makes the inside sphere transparant
-                            {
-                                Renderer rend = sphere.transform.GetComponent<Renderer>();
-
-                                for (float i = 1; i >= 0; i -= Time.deltaTime)
-                                {
-                                    rend.material.color = new Color(0, 0, 0, i);
-                                    yield return null;
-                                }
-                            }
-
-                            IEnumerator WaitASec() //a small timer before the rest happens
-                            {
-                                yield return new WaitForSeconds(1.5f);
-                                transform.position = bigShip.transform.position;
-                                StartCoroutine(FadeOut());
-                                Fuel = 100;
-                                sosCanvas.SetActive(false);
-                                rb.isKinematic = false;
-                            }
-                    </code></pre>
-                    
-        </div>
-    </div>
-
-    
         </div>
     </section>
-    
-
 
     <!-- Screenshots Grid -->
     <section class="container py-5 text-center">
@@ -303,9 +295,6 @@ public bool Gear4(int button15)
             </div>
         </div>
     </section>
-    
-   
-
 
     <!-- Footer -->
     <footer class="text-center py-3 ">

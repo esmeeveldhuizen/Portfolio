@@ -8,6 +8,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
 
@@ -90,7 +94,7 @@
                 <img src="../gifs/expdoor.gif" alt="Platform visual" class="img-fluid rounded shadow">
               </div>
             </div>
-                    <pre><code>
+                    <pre><code class="language-cs">
                             public class OpenDoor : MonoBehaviour
                             {
                                 [SerializeField] Transform door;
@@ -175,7 +179,7 @@
                     <img src="../gifs/expfade.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
-                    <pre><code>
+                    <pre><code class="language-cs">
                             public class FadeIn : MonoBehaviour
                             {
                                 [SerializeField] private GameObject sphere;
@@ -218,7 +222,7 @@
                     <img src="../gifs/exppick.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
                 </div>
             </div>
-                    <pre><code>
+                    <pre><code class="language-cs">
                                         public class BloodVial : MonoBehaviour
                                         {
                                             private void OnTriggerEnter(Collider other)
