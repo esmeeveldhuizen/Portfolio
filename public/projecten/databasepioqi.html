@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../sass/tandwiel.png">
+    <title>EV - Pin It or Quit It: Database & Web Portal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body> 
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
+        <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="../index.html">Main page</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ☰
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
+                        <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
+                        <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
+                        <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
+                        <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
+                        <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
+                        <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
+                        <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/pinit/pinit2.png'); background-size: cover; background-position: center;">
+        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative z-index-2">
+            <h1 class="display-3 fw-bold glow-text">Web Portal & Database</h1>
+            <p class="lead">Supporting system for <strong>Pin It or Quit It</strong></p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="game-info container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="mb-4">Project Overview</h2>
+                <p>
+                    This web portal was developed as a companion system for the AR game <strong>Pin It or Quit It</strong>. 
+                    It stores and displays player scores collected from the game in a structured online database. 
+                    Players’ performance data — such as total points, compliments hit, and insults avoided — are sent directly from Unity to the backend.
+                </p>
+                <p>
+                    The project was initially created as a school assignment to demonstrate back-end and front-end integration with a game project.
+                    However, the final result and implementation were fully developed by me.
+                </p>
+                <h3 class="mt-4">Technologies Used</h3>
+                <ul>
+                    <li><strong>Unity (C#)</strong> — for sending player data from the game.</li>
+                    <li><strong>PHPMyAdmin</strong> — for setting up and managing the MySQL database.</li>
+                    <li><strong>Svelte</strong> — for building a dynamic and responsive web portal interface.</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/qsmD_U1jItY?si=Sc1LDRTHwXouJxYV"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <p class="text-center w-75 mx-auto">
+            When a game session ends, Unity sends the player’s score and game statistics through a PHP script that connects to the MySQL database managed via PHPMyAdmin.  
+            The Svelte-based web portal retrieves and displays these scores in real time, allowing for easy monitoring, testing, and presentation of player performance.
+        </p>
+        <p class="text-center w-75 mx-auto">
+            This setup demonstrates a full integration between a Unity game and a custom-built web system — a valuable skill for creating connected game experiences and data-driven gameplay insights.
+        </p>
+    </section>
+
+ 
+
+    <!-- Screenshots -->
+    <section class="container py-5 text-center">
+        <h2 class="mb-4">Web Portal Screenshots</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../images/dpinit/dpinit4.png" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/dpinit/dpinit2.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/dpinit/dpinit5.png" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Development & Learning</h2>
+        <p class="text-center w-75 mx-auto">
+            Creating this web portal was a valuable experience in combining game development with web technologies. 
+            It required an understanding of both front-end design and back-end data handling. 
+            I learned how to structure data flow between Unity and a live database, use PHP scripts for communication, and design a responsive front-end in Svelte.
+        </p>
+        <p class="text-center w-75 mx-auto">
+            This project helped me gain confidence in building connected systems — an important step toward creating more interactive and data-driven games.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>&copy; 2025 Esmée Veldhuizen 🌸</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

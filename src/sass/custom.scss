@@ -326,4 +326,10 @@ main {
   pointer-events: none; /* zodat klikken naar grid gaat */
 }
 
+.screenshots-vertical .screenshot-img {
+  aspect-ratio: 3 / 4;  /* portretvorm */
+  object-fit: cover;
+  height: auto;
+}
+
 

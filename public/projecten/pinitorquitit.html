@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../sass/tandwiel.png">
+    <title>EV - Pin It or Quit It</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body> 
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
+        <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="../index.html">Main page</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ☰
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
+                        <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
+                        <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
+                        <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
+                        <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
+                        <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
+                        <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
+                        <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/pinit/pinit2.png'); background-size: cover; background-position: center;">
+        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative z-index-2">
+            <h1 class="display-3 fw-bold glow-text">Pin It or Quit It</h1>
+            <p class="lead">A fast-paced AR game combining precision, reflexes, and data-driven feedback.</p>
+        </div>
+    </section>
+
+    <!-- Game Overview -->
+    <section class="game-info container py-5">
+        <div class="text-center my-4">
+            <a href="databasepioqi.html" class="btn btn-primary">Go to Database Page</a>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
+                <iframe 
+                    src="https://www.youtube.com/embed/f37R_79yW2s"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <h2 class="mb-4">Project Overview</h2>
+                <p><strong>Pin It or Quit It</strong> is a solo-developed AR game created in eight weeks. The player takes on the role of a crossbow sharpshooter who must react quickly and aim accurately to pin compliments while avoiding insults. Each hit or miss directly affects the player's score, adding pressure as the timer ticks down.</p>
+                <p>The game was built in <strong>Unity (C#)</strong> using Unity’s built-in <strong>AR Foundation package</strong>. It integrates seamlessly with a custom-built web portal and database system that stores session data, scores, and player performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+  <div class="row align-items-start">
+
+    <!-- Gameplay Mechanics -->
+    <div class="col-md-6 mb-4 mb-md-0">
+      <h2 class="mb-4">Gameplay Mechanics</h2>
+      <p>
+        In <strong>Pin It or Quit It</strong>, players test their reflexes in a fun and chaotic AR environment. 
+        Using a crossbow, you shoot thumbtacks at falling notes, but only the <em>compliments</em> should stick! 
+        Every correct hit rewards extra time and points, while mistakes cost you time and score. 
+        As the countdown timer ticks, the challenge grows more intense. Can you stay focused and pin all the positivity before time runs out?
+      </p>
+    </div>
+
+    <!-- Development Process -->
+    <div class="col-md-6">
+      <h2 class="mb-4">Development Process</h2>
+      <p>
+        This project was developed entirely by me in Unity using C#. 
+        I integrated Unity’s official AR package to create an interactive, real-world gameplay experience. 
+        I designed and implemented all mechanics, from shooting physics to score calculation and database integration. 
+        The assets and note designs were inspired by online references, which I adapted and customized to fit the game’s atmosphere. 
+        The project also includes a backend connection that sends player data to a web portal for score tracking.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Code Section -->
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Code Samples</h2>
+    
+        <div class="text-center mb-4">
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Shooting</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Score</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Data</button>
+        </div>
+    
+        <div id="accordion">
+            <!-- Shooting Code -->
+            <div id="collapseJump" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                            <img src="../gifs/pinitshoot.gif" alt="Shooting visual" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <pre><code class="language-cs">
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Shooting : MonoBehaviour
+{
+    [SerializeField] private List<GameObject> projectiles;
+    private int currentThumbtack = 0;
+
+    [SerializeField] private GameObject shootingPoint;
+    private float speed = 600f;
+
+    public bool isHit = false;
+
+    Animator anim;
+    AudioSource aud;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        aud = GetComponent<AudioSource>();
+    }
+    void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.Space)) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            if (anim != null) anim.SetTrigger("Shoot");
+            aud.Play();
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        if (projectiles.Count == 0) return;
+
+        GameObject thumbtack = projectiles[currentThumbtack];
+
+        GameObject bullet = Instantiate(thumbtack, shootingPoint.transform.position, shootingPoint.transform.rotation);
+        if (bullet != null)
+        {
+            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * speed);
+
+            if (!isHit)
+            {
+                Destroy(bullet, 2);
+            }
+        }
+
+        currentThumbtack = (currentThumbtack + 1) % projectiles.Count;
+
+    }
+
+}
+                    </code></pre>       
+            <!-- GIF -->
+            
+        
+          </div>
+        </div>
+    
+            <!-- Star -->
+            <div id="collapseStar" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                     <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/pinitscore.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
+                    <pre><code class="language-cs">
+public class Score
+{
+    public static Score Instance { get; private set; }
+
+    public int TotalScore { get; set; }
+    public int ComplimentHit { get; set; }
+    public int InsultHit { get; set; }
+
+    public static void Reset()
+    {
+        Instance = new Score();
+    }
+
+
+public class HittingNotes : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            if (other.CompareTag("Compliment"))
+            {
+                Score.Instance.ComplimentHit++;
+                Score.Instance.TotalScore++;
+            }
+            else if (other.CompareTag("Insult"))
+            {
+                Score.Instance.InsultHit++;
+                Score.Instance.TotalScore = Score.Instance.TotalScore - 3;  
+            }
+        }
+    }
+}
+public class DataGui : MonoBehaviour
+{
+    private TMPro.TextMeshProUGUI tmpText;
+
+    private void Awake()
+    {
+        tmpText = GetComponent<TMPro.TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
+        string dataText = tmpText.text;
+        dataText = string.Format(dataText, Score.Instance.TotalScore, Score.Instance.ComplimentHit, Score.Instance.InsultHit);
+        tmpText.text = dataText;
+    }
+}
+                    </code></pre>
+                   
+        </div>
+    </div>
+
+    
+            <!-- death -->
+            <div id="collapseWin" class="collapse" data-parent="#accordion">
+                <div class="bg-primary p-4 rounded mb-4 text-white">
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6">
+                    <img src="../gifs/pinitdata.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
+                </div>
+            </div>
+                    <pre><code class="language-cs">
+using System;
+using System.Collections;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+
+public class CreateSessionApi : MonoBehaviour
+{
+    private string input;
+    private bool usernameExists;
+    [SerializeField] private GameObject errorMessage;
+
+    [Serializable]
+    private class CreateSessionRequest
+    {
+        public string username;
+    }
+
+    [Serializable]
+    private class CreateSessionResponse
+    {
+        public bool ok;
+        public int session_id;
+        public string error;
+    }
+
+    private const string CreateSessionUrl = "http://YourIPAdress:5173/api/create-session";
+
+    public IEnumerator CreateSession(string username)
+    {
+        CreateSessionRequest reqObj = new CreateSessionRequest { username = username };
+        string json = JsonUtility.ToJson(reqObj);
+
+        UnityWebRequest www = new UnityWebRequest(CreateSessionUrl, "POST");
+        www.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.SetRequestHeader("Content-Type", "application/json");
+        www.SetRequestHeader("Accept", "application/json");
+
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            string text = www.downloadHandler.text;
+            try
+            {
+                CreateSessionResponse res = JsonUtility.FromJson<CreateSessionResponse>(text);
+                if (res != null && res.ok)
+                {
+                    Debug.Log($"Session created. session_id = {res.session_id}");
+                    GlobalVars.sessionId = res.session_id;
+                    usernameExists = true;
+                }
+                else
+                {
+                    Debug.LogError($"Server did not return ok. Response: {text}");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to parse JSON: {e.Message}\nResponse: {text}");
+            }
+        }
+        else
+        {
+            Debug.LogError($"HTTP error: {www.responseCode} - {www.error}");
+            try
+            {
+                string text = www.downloadHandler.text;
+                CreateSessionResponse res = JsonUtility.FromJson<CreateSessionResponse>(text);
+                if (res != null && !string.IsNullOrEmpty(res.error))
+                {
+                    Debug.LogError($"The server provided the following error message: {res.error}");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to parse JSON: {e.Message}");
+            }
+        }
+    }
+
+    public void CreateSession()
+    {
+        StartCoroutine(CreateTheSessionAsync());
+    }
+    private IEnumerator CreateTheSessionAsync()
+    {
+        yield return StartCoroutine(CreateSession(input));
+        if (usernameExists)
+        {
+            SceneManager.LoadScene("Main scene");
+        }
+        else
+        {
+            errorMessage.SetActive(true);
+            yield return new WaitForSeconds(5);
+            errorMessage.SetActive(false);
+        }
+    }
+
+    public void ReadInputField(string s)
+    {
+        input = s;
+        Debug.Log(input);
+        GlobalVars.username = input;
+    }
+}
+using System;
+using System.Collections;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class SubmitScoreApi : MonoBehaviour
+{
+    private Score score;
+    private GameTimer gameTimer;
+    private GameTimer timePlayed;
+    private NotesFalling speedLevel;
+
+    [Serializable]
+    private class SubmitScoreRequest
+    {
+        public int session_id;
+        public int level_id;
+        public int score;
+        public float time_taken;
+        public float accuracy;
+    }
+
+    [Serializable]
+    private class SubmitScoreResponse
+    {
+        public bool ok;
+        public int score_id;
+        public string error;
+    }
+
+    private const string SubmitScoreUrl = "http://YourIPAdress:5173/api/submit-score";
+    public IEnumerator SubmitScore(int sessionId, int levelId, float timeTaken, float accuracy)
+    {
+        SubmitScoreRequest reqObj = new SubmitScoreRequest
+        {
+            session_id = sessionId,
+            level_id = levelId,
+            score = Score.Instance.TotalScore,
+            time_taken = timeTaken,
+            accuracy = Score.Instance.ComplimentHit
+        };
+
+        string json = JsonUtility.ToJson(reqObj);
+
+        UnityWebRequest www = new UnityWebRequest(SubmitScoreUrl, "POST");
+        www.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.SetRequestHeader("Content-Type", "application/json");
+        www.SetRequestHeader("Accept", "application/json");
+
+        yield return www.SendWebRequest();
+        Debug.Log(www.result + " www");
+        if (www.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.result + " www");
+            string text = www.downloadHandler.text;
+            try
+            {
+                SubmitScoreResponse res = JsonUtility.FromJson<SubmitScoreResponse>(text);
+                if (res != null && res.ok)
+                {
+                    Debug.Log($"Score saved. score_id = {res.score_id}");
+                }
+                else
+                {
+                    Debug.LogError($"Server did not return ok. Response: {text}");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to parse JSON: {e.Message}\nResponse: {text}");
+            }
+        }
+        else
+        {
+            Debug.LogError($"HTTP error: {www.responseCode} - {www.error}");
+            try
+            {
+                string text = www.downloadHandler.text;
+                SubmitScoreResponse res = JsonUtility.FromJson<SubmitScoreResponse>(text);
+                if (res != null && !string.IsNullOrEmpty(res.error))
+                {
+                    Debug.LogError($"The server provided the following error message: {res.error}");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to parse JSON: {e.Message}");
+            }
+        }
+    }
+
+    private void Start()
+    {
+        gameTimer = FindFirstObjectByType<GameTimer>();
+        timePlayed = FindFirstObjectByType<GameTimer>();
+        speedLevel = FindFirstObjectByType<NotesFalling>();
+    }
+
+    private void Update()
+    {
+        TimesUp();
+    }
+    private void TimesUp()
+    {
+        if (gameTimer.TimeLeft <= 0f)
+        {
+            int sessionId = GlobalVars.sessionId;
+            int levelId = 1;
+            Debug.Log(sessionId);
+
+            StartCoroutine(SubmitScore(sessionId, levelId, timePlayed.TimePlaying, speedLevel.speed));
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="container py-5 text-center screenshots-vertical">
+        <h2 class="mb-4">Screenshots</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../images/pinit/pinit1.png" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/pinit/pinit3.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+            <div class="col-md-4">
+                <img src="../images/pinit/pinit4.png" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+            </div>
+        </div>
+    </section>
+
+      <!-- Challenges & Learnings -->
+    <section class="container py-5  rounded">
+        <h2 class="mb-4 text-center">Challenges & Learnings</h2>
+        <p>Developing <em>Pin It or Quit It</em> entirely on my own taught me valuable lessons about full-cycle development. One major challenge was synchronizing real-time AR gameplay with server-side data saving without interrupting performance. I learned how to handle asynchronous API calls in Unity, manage time-based gameplay mechanics, and implement visual feedback for user interaction.</p>
+        <p>Additionally, balancing intuitive design with a technically stable backend pushed me to think critically about architecture and user experience. The result was a fully functional, data-driven AR game that I’m proud to have created from start to finish.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>&copy; 2025 Esmée Veldhuizen 🌸</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
