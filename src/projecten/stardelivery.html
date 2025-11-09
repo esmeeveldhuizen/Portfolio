@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,14 +22,14 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
 </head>
 <body> 
 
-    <!-- Navigatiebalk -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
         <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,7 +38,8 @@
                     <a class="nav-link text-white" href="../index.html">Main page</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" 
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ☰
                     </a>
                     <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
@@ -59,17 +60,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/banner/star.jpg'); background-size: cover; background-position: center;">
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" 
+             style="background-image: url('../images/banner/star.jpg'); background-size: cover; background-position: center;">
         <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative z-index-2">
             <h1 class="display-3 fw-bold glow-text">Star Delivery</h1>
-            <p class="lead">A game made in 5 weeks with 4 developers</p>
+            <p class="lead">A VR space delivery game made in 5 weeks with 4 developers</p>
         </div>
     </section>
 
-    <!-- Over de game (Split layout) -->
-    <section class="game-info container py-5">
-        <div class="row align-items-center">
+    <!-- Project Overview -->
+      <section class="game-info container py-5">
+            <div class="row align-items-center">
             <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
                 <iframe 
                     src="https://www.youtube.com/embed/SkHtUyeHaLQ?si=SrgOhFnNP-dBZdOz"
@@ -78,31 +80,60 @@
                     allowfullscreen>
                 </iframe>
             </div>
-            <div class="col-md-6">
-                <h2 class="mb-4">Deliver through space in VR!</h2>
-                <p>Step into the shoes of a space delivery driver, where you'll navigate through the stars and planets to deliver packages on time. With the immersive power of a racing seat and the Quest 3 VR headset, you're in for an exhilarating adventure. Race against the clock, dodge asteroids, and conquer challenging space routes, all while experiencing an ultra-realistic VR experience. Can you become the fastest, most reliable space delivery driver in the galaxy?</p>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <h2 class="mb-4">Project Overview</h2>
+                <p><strong>Star Delivery</strong> is a VR space delivery experience where players pilot a spaceship to deliver packages to distant planets. 
+            The game uses a racing simulator setup with a steering wheel, pedals, and gear shifter to control the ship, creating a realistic, fully immersive experience. 
+            The project was developed over five weeks by a team of four developers, while the entire art class contributed visuals in just four days. 
+            My role focused on programming the VR controls, fuel mechanics, and general game logic.</p>
             </div>
         </div>
     </section>
 
-    <!-- Code sectie -->
+<section class="container py-5">
+  <div class="row align-items-start">
+
+    <!-- Gameplay Mechanics -->
+    <section class="col-md-6 mb-4 mb-md-0">
+        <h2 class="mb-4">Gameplay Mechanics</h2>
+<P>         In <strong>Star Delivery</strong>, the player controls the spaceship entirely through a racing simulator setup. 
+            The steering wheel turns the ship, pedals control acceleration and braking, and the gear shifter handles reverse and moving the ship up and down.
+            The player must navigate between planets while avoiding astroids and managing fuel, collected by flying through stars scattered through space. 
+            If the ship runs out of fuel, the mission fails. This blend of realism and arcade-like challenge makes every delivery an exciting race against time.
+        </p>
+    </section>
+
+    <!-- Development Process -->
+    <section class="col-md-6">
+        <h2 class="mb-4">Development Process</h2>
+        <p>
+            Our team of four developers worked collaboratively in Unity, focusing on integrating VR mechanics and realistic ship physics. 
+            I implemented movement control, fuel consumption, and collision detection, ensuring everything responded naturally to the racing rig inputs.
+            The art team created all assets in just four days, and I was responsible for integrating them efficiently. 
+            This project strengthened my understanding of teamwork, optimization, and balancing performance with immersion in VR environments.
+        </p>
+    </section>
+  </div>
+</section>
+
+
+    <!-- Code Section -->
     <section class="container py-5">
-        <h2 class="mb-4 text-center">Code</h2>
-    
+        <h2 class="mb-4 text-center">Code Samples</h2>
         <div class="text-center mb-4">
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Up/Down</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Rotation</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Death</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseMovement" aria-expanded="true" aria-controls="collapseMovement">Movement</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseRotation" aria-expanded="false" aria-controls="collapseRotation">Rotation</button>
+            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseFuel" aria-expanded="false" aria-controls="collapseFuel">Fuel System</button>
         </div>
     
         <div id="accordion">
 
-            <!-- Jump -->
-            <div id="collapseJump" class="collapse" data-parent="#accordion">
+            <!-- Movement -->
+            <div id="collapseMovement" class="collapse" data-parent="#accordion">
                 <div class="bg-primary p-4 rounded mb-4 text-white">
                     <div class="row justify-content-center mt-3">
                         <div class="col-md-6">
-                            <img src="../gifs/starup.gif" alt="Platform visual" class="img-fluid rounded shadow">
+                            <img src="../gifs/starup.gif" alt="Movement Demo" class="img-fluid rounded shadow">
                         </div>
                     </div>
                     <pre><code class="language-cs">
@@ -276,13 +307,13 @@ IEnumerator WaitASec()
     sosCanvas.SetActive(false);
     rb.isKinematic = false;
 }
-</code></pre>
+                    </code></pre>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Screenshots Grid -->
+    <!-- Screenshots -->
     <section class="container py-5 text-center">
         <h2 class="mb-4">Screenshots</h2>
         <div class="row">
@@ -298,8 +329,19 @@ IEnumerator WaitASec()
         </div>
     </section>
 
+    <!-- Challenges & Learnings -->
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Challenges & Learnings</h2>
+        <p class="text-center w-75 mx-auto">
+            One of the biggest challenges was fine-tuning the VR input system to synchronize perfectly with the physical racing simulator setup.
+            Each control, from the gear shifter to the steering, required careful calibration to feel natural in VR. 
+            Balancing fuel mechanics, ship movement, and comfort was another key learning experience.
+            This project deepened my skills in Unity physics, input systems, and hardware integration, while also teaching me how to iterate quickly with a large, interdisciplinary team.
+        </p>
+    </section>
+
     <!-- Footer -->
-    <footer class="text-center py-3 ">
+    <footer class="text-center py-3">
         <p>&copy; 2025 Esmée Veldhuizen🌸</p>
     </footer>
 
