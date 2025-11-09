@@ -1,288 +1,309 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../sass/tandwiel.png">
-    <title>EV - The Experiment: Nature Edition</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/custom.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">       
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../sass/tandwiel.png">
+  <title>EV - The Experiment: Nature Edition</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/custom.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">     
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </head>
-<body>
+<body> 
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
-        <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="../index.html">Main page</a>
-                </li>
-                <!-- Dropdown Menu for Projects -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ☰
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
-                        <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
-                        <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
-                        <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
-                        <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
-                        <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
-                        <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
-                        <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/Experi/exp1.jpg'); background-size: cover; background-position: center;">
-        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
-        <div class="container position-relative z-index-2">
-            <h1 class="display-3 fw-bold glow-text">The Experiment: Nature Edition</h1>
-            <p class="lead">A game made in 4 weeks with 2 developers</p>
-        </div>
-    </section>
-
-    <!-- About the Game (Split Layout) -->
-    <section class="game-info container py-5">
-        <div class="row align-items-center">
-   <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
-  <iframe 
-    src="https://www.youtube.com/embed/0tiAWTIC5As?si=DEaYwzac7yBvb9pk"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-            <div class="col-md-6">
-                <h2 class="mb-4">Escape the laboratory in VR!</h2>
-                <p>In this immersive VR experience, you find yourself trapped in an abandoned and overgrown laboratory. Explore the environment, repair doors, and escape before the hostile robots catch up to you! With the Meta Quest 3, you’ll feel the suspense and danger around every corner. Can you survive and make it out in time?</p>
-            </div>
-        </div>
-    </section>
-
-
- <section class="container py-5">
-        <h2 class="mb-4 text-center">Code</h2>
-    
-        <div class="text-center mb-4">
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseJump" aria-expanded="true" aria-controls="collapseJump">Door</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseStar" aria-expanded="false" aria-controls="collapseStar">Fade</button>
-            <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseWin" aria-expanded="false" aria-controls="collapseWin">Pickup</button>
-        </div>
-    
-        <div id="accordion">
-    
-            <!-- Jump -->
-            <div id="collapseJump" class="collapse" data-parent="#accordion">
-                <div class="bg-primary p-4 rounded mb-4 text-white">
-                    <div class="row justify-content-center mt-3">
-              <div class="col-md-6">
-                <img src="../gifs/expdoor.gif" alt="Platform visual" class="img-fluid rounded shadow">
-              </div>
-            </div>
-                    <pre><code class="language-cs">
-                            public class OpenDoor : MonoBehaviour
-                            {
-                                [SerializeField] Transform door;
-                                //[SerializeField] Transform socket;
-                                [SerializeField] public GameObject handle;
-                                private float openSpeed = 0.5f;
-                                private bool handleInPlace = false;
-                            
-                                private Vector3 startPos;
-                                private Vector3 targetPos;
-                            
-                                public AudioSource Audio;
-                                public AudioClip openDoor;
-                                public AudioClip WrongDoor;
-                            
-                                void Start()
-                                {
-                                    startPos = door.position;
-                                    targetPos = new Vector3(startPos.x, startPos.y + 3f, startPos.z);
-                                }
-                            
-                                void Update()
-                                {
-                                    if (handleInPlace == true)
-                                    {
-                                        DoorOpening();
-                                    }
-                                }
-                            
-                                void DoorOpening()
-                                {
-                                    door.position = Vector3.Lerp(door.position, targetPos, Time.deltaTime * openSpeed);
-                                }
-                            
-                                private void OnTriggerEnter(Collider other)
-                                {
-                                    if (other.gameObject == handle)
-                                    {
-                                        StartCoroutine(WaitBeforeOpening());
-                                        handle.transform.SetParent(door);
-                            
-                                        if(this.gameObject.name == "FirstDoor")
-                                        {
-                                            WaveSpawner.Instance.Door1Opened = true;
-                                        }
-                                        if (this.gameObject.name == "SecondDoor")
-                                        {
-                                            WaveSpawner.Instance.Door2Opened = true;
-                                        }
-                                        if (this.gameObject.name == "LastDoor")
-                                        {
-                                            WaveSpawner.Instance.FinalDoorOpened = true;
-                                        }
-                                    }
-                                    if(other.gameObject != handle && other.CompareTag("Gear"))
-                                    {
-                                        Audio.clip = WrongDoor;
-                                        Audio.Play();
-                                    }
-                                }
-                            
-                                private IEnumerator WaitBeforeOpening()
-                                {
-                                    yield return new WaitForSeconds(3f);
-                                    handleInPlace = true;
-                                    Audio.clip = openDoor;
-                                    Audio.Play();
-                                }
-                            }
-                    </code></pre>       
-            <!-- GIF -->
-            
-        
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
+    <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="../index.html">Main page</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ☰
+          </a>
+          <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
+            <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
+            <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
+            <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
+            <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
+            <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
+            <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
+            <a class="dropdown-item text-white" href="javascript.html">Dot by Dot</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
           </div>
-        </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/Experi/exp1.jpg'); background-size: cover; background-position: center;">
+    <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+    <div class="container position-relative z-index-2">
+      <h1 class="display-3 fw-bold glow-text">The Experiment: Nature Edition</h1>
+      <p class="lead">A full VR survival experience built in Unity within four weeks.</p>
+    </div>
+  </section>
+  
+  <div class="mt-3 d-flex justify-content-center">
+  <a href="https://jappert.itch.io/the-experiment-nature-edition" 
+     target="_blank" 
+     class="btn btn-danger d-inline-flex align-items-center shadow">
+    <img src="https://static.itch.io/images/itchio-textless-white.svg" 
+         alt="Itch.io" 
+         style="width: 24px; height: 24px; margin-right: 8px;">
+    Play on Itch.io
+  </a>
+</div>
+
+
+  <!-- Game Overview -->
+  <section class="game-info container py-5">
+    <div class="row align-items-center">
+      <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
+        <iframe 
+          src="https://www.youtube.com/embed/0tiAWTIC5As?si=DEaYwzac7yBvb9pk"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0">
+        <h2 class="mb-4">Project Overview</h2>
+        <p><strong>The Experiment: Nature Edition</strong> is a first-person VR survival game created by a team of 2 developers and 5 artists in just four weeks. Set in a forgotten laboratory overtaken by nature, players must fight off hostile robots while searching for a way out.</p>
+        <p>Armed with a weapon and a shield, you must survive waves of mechanical enemies, collect power-ups, and unlock doors using gears dropped by the final robot in each wave. Every decision counts as you fight for survival in this dangerous, decaying environment.</p>
+      </div>
+    </div>
     
-            <!-- Star -->
-            <div id="collapseStar" class="collapse" data-parent="#accordion">
-                <div class="bg-primary p-4 rounded mb-4 text-white">
-                     <div class="row justify-content-center mt-3">
-                        <div class="col-md-6">
-                    <img src="../gifs/expfade.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
-                </div>
-            </div>
-                    <pre><code class="language-cs">
-                            public class FadeIn : MonoBehaviour
-                            {
-                                [SerializeField] private GameObject sphere;
-                                float fadeAmount = 0;
-                            
-                                public void FadeBegin()
-                                {
-                                    {
-                                        sphere.SetActive(true);
-                                        StartCoroutine(BlackScreenFadeIn());
-                                    }
-                                }
-                            
-                                public IEnumerator BlackScreenFadeIn()
-                                {
-                                    while (fadeAmount < 1)
-                                    {
-                                        sphere.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeAmount);
-                                        yield return new WaitForSeconds(0.03f);
-                                        fadeAmount += 0.015f;
-                            
-                                        if (fadeAmount >= 0.95f)
-                                        {
-                                            SceneManager.LoadScene("GameOver");
-                                        }
-                                    }
-                                }
-                        
-                    </code></pre>
-                   
-        </div>
+  </section>
+
+  <!-- Gameplay Mechanics / Development -->
+  <section class="container py-5">
+    <div class="row align-items-start">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="mb-4">Gameplay Mechanics</h2>
+        <p>
+          <strong>The Experiment: Nature Edition</strong> offers an intense and immersive VR experience. 
+          Players explore a mysterious laboratory where malfunctioning robots patrol every corridor. 
+          Use your blaster to eliminate threats and your energy shield to block incoming attacks. 
+          Each defeated robot may drop power-ups, but beware: some also trigger new waves of enemies.
+        </p>
+        <p>
+          The ultimate goal is to survive long enough to collect the gears that open each door, progressing deeper into the lab until you finally find the escape.
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <h2 class="mb-4">Development Process</h2>
+        <p>
+          The game was built using <strong>Unity (C#)</strong> for <strong>Meta Quest 3</strong> and was designed specifically for VR interaction. 
+          I was responsible for gameplay programming, environmental setup, and the interaction systems such as door unlocking, fading transitions, and collectible mechanics.
+        </p>
+        <p>
+          Our focus was on creating a smooth and immersive VR experience, balancing performance, physics, and player comfort while implementing engaging combat and environmental storytelling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Samples -->
+  <section class="container py-5">
+    <h2 class="mb-4 text-center">Code Samples</h2>
+
+    <div class="text-center mb-4">
+      <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseDoor" aria-expanded="true" aria-controls="collapseDoor">Door</button>
+      <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapseFade" aria-expanded="false" aria-controls="collapseFade">Fade</button>
+      <button class="btn btn-secondary mx-2" data-toggle="collapse" data-target="#collapsePickup" aria-expanded="false" aria-controls="collapsePickup">Pickup</button>
     </div>
 
-    
-            <!-- Win -->
-            <div id="collapseWin" class="collapse" data-parent="#accordion">
-                <div class="bg-primary p-4 rounded mb-4 text-white">
-                     <div class="row justify-content-center mt-3">
-                        <div class="col-md-6">
-                    <img src="../gifs/exppick.gif" alt="Star Collect" class="img-fluid rounded shadow mt-3">
-                </div>
+    <div id="accordion">
+
+      <!-- Door -->
+      <div id="collapseDoor" class="collapse" data-parent="#accordion">
+        <div class="bg-primary p-4 rounded mb-4 text-white">
+          <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+              <img src="../gifs/expdoor.gif" alt="Door opening" class="img-fluid rounded shadow">
             </div>
-                    <pre><code class="language-cs">
-                                        public class BloodVial : MonoBehaviour
-                                        {
-                                            private void OnTriggerEnter(Collider other)
-                                            {
-                                                if(other.CompareTag("Player"))
-                                                {
-                                                    PlayerHealth PH = other.GetComponent<PlayerHealth>();
-                                                    if(PH.Phealth != 100)
-                                                    {
-                                                        PH.Phealth += 50;
-                                                    }
+          </div>
+<pre><code class="language-cs">
+public class OpenDoor : MonoBehaviour
+{
+    [SerializeField] Transform door;
+    [SerializeField] public GameObject handle;
+    private float openSpeed = 0.5f;
+    private bool handleInPlace = false;
 
-                                                    if(PH.Phealth > 100)
-                                                    {
-                                                        PH.Phealth = 100;
-                                                    }
+    private Vector3 startPos;
+    private Vector3 targetPos;
 
-                                                    Destroy(this.gameObject);
-                                                }
-                                            }
-                                        }
-                    </code></pre>
-                   
+    public AudioSource Audio;
+    public AudioClip openDoor;
+    public AudioClip WrongDoor;
+
+    void Start()
+    {
+        startPos = door.position;
+        targetPos = new Vector3(startPos.x, startPos.y + 3f, startPos.z);
+    }
+
+    void Update()
+    {
+        if (handleInPlace)
+            door.position = Vector3.Lerp(door.position, targetPos, Time.deltaTime * openSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == handle)
+        {
+            StartCoroutine(WaitBeforeOpening());
+            handle.transform.SetParent(door);
+
+            if (this.gameObject.name == "FirstDoor")
+                WaveSpawner.Instance.Door1Opened = true;
+            if (this.gameObject.name == "SecondDoor")
+                WaveSpawner.Instance.Door2Opened = true;
+            if (this.gameObject.name == "LastDoor")
+                WaveSpawner.Instance.FinalDoorOpened = true;
+        }
+        else if (other.CompareTag("Gear"))
+        {
+            Audio.clip = WrongDoor;
+            Audio.Play();
+        }
+    }
+
+    private IEnumerator WaitBeforeOpening()
+    {
+        yield return new WaitForSeconds(3f);
+        handleInPlace = true;
+        Audio.clip = openDoor;
+        Audio.Play();
+    }
+}
+</code></pre>
         </div>
+      </div>
+
+      <!-- Fade -->
+      <div id="collapseFade" class="collapse" data-parent="#accordion">
+        <div class="bg-primary p-4 rounded mb-4 text-white">
+          <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+              <img src="../gifs/expfade.gif" alt="Fade effect" class="img-fluid rounded shadow mt-3">
+            </div>
+          </div>
+<pre><code class="language-cs">
+public class FadeIn : MonoBehaviour
+{
+    [SerializeField] private GameObject sphere;
+    float fadeAmount = 0;
+
+    public void FadeBegin()
+    {
+        sphere.SetActive(true);
+        StartCoroutine(BlackScreenFadeIn());
+    }
+
+    public IEnumerator BlackScreenFadeIn()
+    {
+        while (fadeAmount < 1)
+        {
+            sphere.GetComponent<Renderer>().material.color = new Color(0, 0, 0, fadeAmount);
+            yield return new WaitForSeconds(0.03f);
+            fadeAmount += 0.015f;
+
+            if (fadeAmount >= 0.95f)
+                SceneManager.LoadScene("GameOver");
+        }
+    }
+}
+</code></pre>
+        </div>
+      </div>
+
+      <!-- Pickup -->
+      <div id="collapsePickup" class="collapse" data-parent="#accordion">
+        <div class="bg-primary p-4 rounded mb-4 text-white">
+          <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+              <img src="../gifs/exppick.gif" alt="Pickup item" class="img-fluid rounded shadow mt-3">
+            </div>
+          </div>
+<pre><code class="language-cs">
+public class BloodVial : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth PH = other.GetComponent<PlayerHealth>();
+            if (PH.Phealth != 100)
+                PH.Phealth += 50;
+
+            if (PH.Phealth > 100)
+                PH.Phealth = 100;
+
+            Destroy(this.gameObject);
+        }
+    }
+}
+</code></pre>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    
-        </div>
-    </section>
-    
+  <!-- Screenshots -->
+  <section class="container py-5 text-center screenshots-vertical">
+    <h2 class="mb-4">Screenshots</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="../images/Experi/exp2.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
+      </div>
+      <div class="col-md-4">
+        <img src="../images/Experi/exp5.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
+      </div>
+      <div class="col-md-4">
+        <img src="../images/Experi/exp6.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
+      </div>
+    </div>
+  </section>
 
+  <!-- Challenges & Learnings -->
+  <section class="container py-5 rounded">
+    <h2 class="mb-4 text-center">Challenges & Learnings</h2>
+    <p class="text-center w-75 mx-auto">
+      Developing <em>The Experiment: Nature Edition</em> taught me how to design immersive VR mechanics while maintaining performance and user comfort. 
+      One of the biggest challenges was implementing responsive door and weapon interactions that felt natural in VR space.
+    </p>
+    <p class="text-center w-75 mx-auto">
+      I also learned how to structure enemy wave systems, trigger-based power-ups, and smooth visual transitions using Unity’s coroutine system.
+      Balancing combat intensity with exploration made the gameplay both tense and rewarding.
+    </p>
+  </section>
 
-    <!-- Screenshots Grid -->
-    <section class="container py-5 text-center">
-        <h2 class="mb-4">Screenshots</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <img src="../images/Experi/exp2.jpg" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-            <div class="col-md-4">
-                <img src="../images/Experi/exp5.jpg" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-            <div class="col-md-4">
-                <img src="../images/Experi/exp6.jpg" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-        </div>
-    </section>
+  <!-- Footer -->
+  <footer class="text-center py-3">
+    <p>&copy; 2025 Esmée Veldhuizen 🌸</p>
+  </footer>
 
-   
-
-    <!-- Footer -->
-    <footer class="text-center py-3">
-        <p>&copy; 2025 Esmée Veldhuizen🌸</p>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
