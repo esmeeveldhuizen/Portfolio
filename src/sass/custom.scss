@@ -397,3 +397,18 @@ main {
     border-radius: 0; /* optioneel: laat de randen mooi aansluiten */
   }
 }
+
+
+.grid-link {
+  color: $textcolor;               /* leuk roze accent */
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-left: 10px;
+}
+
+.grid-link:hover {
+  color: $secondary;              /* iets lichtere tint bij hover */
+  text-decoration: underline;
+  cursor: pointer;
+}
