@@ -1,83 +1,108 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../sass/tandwiel.png">
-    <title>EV - Dotbydot</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/custom.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../sass/tandwiel.png">
+  <title>EV - Dot by Dot</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/custom.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </head>
+
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-pink shadow rounded bg-primary">
+    <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="../index.html">Main page</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown">☰</a>
+          <div class="dropdown-menu dropdown-menu-right bg-primary">
+            <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
+            <a class="dropdown-item text-white" href="theexperiment.html">The Experiment</a>
+            <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
+            <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
+            <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
+            <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
+            <a class="dropdown-item text-white" href="javascript.html">Dot by Dot</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Navigatiebalk -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-pink shadow rounded bg-primary">
-        <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="../index.html">Main page</a>
-                </li>
-                 <!-- Dropdown Menu voor Projecten -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ☰
-                </a>
-                <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
-                    <a class="dropdown-item text-white" href="stardelivery.html">Star Delivery</a>
-                        <a class="dropdown-item text-white" href="theexperiment.html">The Experiment: Nature Edition</a>
-                        <a class="dropdown-item text-white" href="tristartriumph.html">Tristar Triumph</a>
-                        <a class="dropdown-item text-white" href="unrealengine.html">Alter Ego</a>
-                        <a class="dropdown-item text-white" href="pinitorquitit.html">Pin It or Quit It</a>
-                        <a class="dropdown-item text-white" href="splitclash.html">Split Clash</a>
-                        <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
+  <!-- Hero -->
+  <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/canvas/canv1.png'); background-size: cover; background-position: center;">
+    <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
+    <div class="container position-relative z-index-2">
+      <h1 class="display-3 fw-bold glow-text">Dot by Dot</h1>
+      <p class="lead">My first project built with JavaScript</p>
+    </div>
+  </section>
 
-
-                </div>
-            </li>
-            </ul>
+  <!-- Project Overview + Video -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="mb-4">Project Overview</h2>
+        <p>
+          Dot by Dot is a small web-based pixel art tool created entirely in JavaScript. 
+          Users can draw on a grid using different colors, switch between a pen and eraser, 
+          and export their artwork as a PNG file. It’s a simple but fun project that helped me understand event handling, DOM manipulation, and color logic.
+        </p>
+        <p>
+    This project not only taught me how to create an interactive pixel canvas, 
+    but the same grid system was also reused to design the canvas background 
+    on the homepage of this portfolio.
+</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
+          <iframe 
+            src="https://www.youtube.com/embed/6_XaqvZzO6Q?si=NoLo3X3dSLerFKey"
+            title="Dot by Dot Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+          
         </div>
-    </nav>
+        
+      </div>
+    </div>
+  </section>
 
-    <!-- hier de context -->
-      <!-- Hero Section -->
-    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/canvas/canv1.png'); background-size: cover; background-position: center;">
-        <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
-        <div class="container position-relative z-index-2">
-            <h1 class="display-3 fw-bold glow-text">Dot by dot</h1>
-            <p class="lead">A pixel art canvas made by me</p>
-        </div>
-    </section>
+  <!-- Mechanics & Development -->
+  <section class="container py-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="mb-3">Core Features</h2>
+        <p>
+          The canvas grid is generated dynamically using JavaScript. Each grid cell responds to click and drag events, 
+          allowing smooth drawing. Players can pick a color, switch tools, and the app automatically updates each cell’s background color in real-time.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-3">Development Process</h2>
+        <p>
+          As my first real JavaScript project, I focused on learning how to handle user interactions efficiently. 
+          The drawing grid, color picker, and export function were all built from scratch using vanilla JS and DOM APIs. 
+          It also taught me about structuring clean, readable functions and debugging user input behavior.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Over de game (Split layout) -->
-    <section class="game-info container py-5">
-        <div class="row align-items-center">
-            <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
-  <iframe 
-    src="https://www.youtube.com/embed/6_XaqvZzO6Q?si=NoLo3X3dSLerFKey"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-            <div class="col-md-6">
-                <h2 class="mb-4">A pixel art canvas!</h2>
-                <p>A fun and easy way to make your own pixel art! Pick a color, draw or erase pixels, and save your picture as a PNG. Perfect for small doodles or cool pixel creations!</p>
-           </div>
-        </div>
-    </section>
-
-<section class="container py-5">
+  <section class="container py-5">
         <h2 class="mb-4 text-center">Code</h2>
     
         <div class="text-center mb-4">
@@ -100,7 +125,7 @@
                                 saveBtn.addEventListener("click", () => {
                                 const canvas = document.createElement("canvas");
                                 const ctx = canvas.getContext("2d");
-                                const cellSize = 20; // zelfde als je .grid-item afmetingen
+                                const cellSize = 20; 
 
                                 canvas.width = columns * cellSize;
                                 canvas.height = rows * cellSize;
@@ -210,34 +235,35 @@
         </div>
     </section>
 
+ 
 
-    <!-- Screenshots Grid -->
-    <section class="container py-5 text-center">
-        <h2 class="mb-4">Screenshots</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <img src="../images/canvas/canv5.png" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-            <div class="col-md-4">
-                <img src="../images/canvas/canv2.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-            <div class="col-md-4">
-                <img src="../images/canvas/canv6.png" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img">
-            </div>
-        </div>
-    </section>
+  <!-- Screenshots -->
+  <section class="container py-5 text-center">
+    <h2 class="mb-4">Screenshots</h2>
+    <div class="row">
+      <div class="col-md-4"><img src="../images/canvas/canv5.png" alt="Screenshot 1" class="img-fluid rounded shadow-lg screenshot-img"></div>
+      <div class="col-md-4"><img src="../images/canvas/canv2.png" alt="Screenshot 2" class="img-fluid rounded shadow-lg screenshot-img"></div>
+      <div class="col-md-4"><img src="../images/canvas/canv6.png" alt="Screenshot 3" class="img-fluid rounded shadow-lg screenshot-img"></div>
+    </div>
+  </section>
 
-    
-    
+   <!-- Challenges & Learning -->
+  <section class="container py-5 text-center">
+    <h2 class="mb-4">Challenges & Learning</h2>
+    <p class="w-75 mx-auto">
+      One of the main challenges was fine-tuning the drawing experience — making sure that clicking, dragging, and erasing felt smooth and natural. 
+      It took some experimentation to get the event listeners and color logic to behave consistently across different browsers. 
+      Overall, this project gave me a solid foundation in JavaScript and confidence in building interactive web apps from scratch.
+    </p>
+  </section>
 
-     <!-- Footer -->
-     <footer class=" text-center py-3">
-        <p>&copy; 2025 Esmée Veldhuizen🌸</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="text-center py-3">
+    <p>&copy; 2025 Esmée Veldhuizen🌸</p>
+  </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
