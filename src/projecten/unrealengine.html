@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../sass/tandwiel.png">
     <title>EV - Alter Ego</title>
+
+    <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body> 
 
-    <!-- Navigatiebalk -->
+    <!-- Navigatie -->
     <nav class="navbar navbar-expand-lg bg-primary shadow rounded">
         <a class="nav-link text-white font-weight-bold" href="../index.html">Esmée Veldhuizen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -23,7 +30,8 @@
                     <a class="nav-link text-white" href="../index.html">Main page</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="projectDropdown" role="button" 
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ☰
                     </a>
                     <div class="dropdown-menu dropdown-menu-right bg-primary" aria-labelledby="projectDropdown">
@@ -36,7 +44,6 @@
                         <a class="dropdown-item text-white" href="javascript.html">Dot by dot</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-white" href="../gamejam.html">GameJam</a>
-
                     </div>
                 </li>
             </ul>
@@ -44,34 +51,68 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" style="background-image: url('../images/lostmother/mom8.png'); background-size: cover; background-position: center;">
+    <section class="hero text-white text-center py-5 position-relative d-flex justify-content-center align-items-center" 
+             style="background-image: url('../images/lostmother/mom8.png'); background-size: cover; background-position: center;">
         <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative z-index-2">
             <h1 class="display-3 fw-bold glow-text">Verloren Moeder</h1>
-            <p class="lead">An experience made in 8 weeks with 3 developers</p>
+            <p class="lead">A short VR experience made in 8 weeks with 3 developers and 1 artist</p>
         </div>
     </section>
 
-    <!-- Over de game (Split layout) -->
+    <!-- Project Overview -->
     <section class="game-info container py-5">
         <div class="row align-items-center">
             <div class="ratio ratio-16x9 mx-auto" style="max-width: 500px;">
-  <iframe 
-    src="https://www.youtube.com/embed/mv0R59LU6yI?si=oHisBbWqCc5lOdSa"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-            <div class="col-md-6">
-                <h2 class="mb-4">A short VR experience!</h2>
-                <p>You play as a curious kid waiting for your mom on a busy shopping street. She tells you to stay on the bench while she quickly runs an errand. But distractions are everywhere, fruit falls on the ground, a balloon floats by… and before you know it, you’ve wandered off. Your mom calls out, more worried each time. When she finally finds you, she's upset, but mostly just relieved. She hugs you tight, glad you're safe.</p>
-           </div>
+                <iframe 
+                    src="https://www.youtube.com/embed/mv0R59LU6yI?si=oHisBbWqCc5lOdSa"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <h2 class="mb-4">Project Overview</h2>
+                <p>
+                    <strong>Verloren Moeder</strong> is a short and emotional VR experience made in Unreal Engine 5.  
+                    You play as a young, curious child sitting on a bench while your mother goes shopping. She tells you to stay put, 
+                    but everything around you is so distracting, fruit falls, balloons float away, and your curiosity takes over.  
+                    As you wander off, your mother’s voice becomes worried, until she finally finds you and gives you a comforting hug.  
+                    The story explores curiosity, fear, and the warmth of being found again.
+                </p>
+            </div>
         </div>
     </section>
 
+    <!-- Gameplay Mechanics & Development -->
+    <section class="container py-5">
+        <div class="row align-items-start">
+            <!-- Gameplay Mechanics -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="mb-4">Gameplay Mechanics</h2>
+                <p>
+                    The experience uses simple, natural VR interactions. You can look around, reach for objects, and follow visual and sound cues 
+                    that gently guide you through the story. There’s no traditional gameplay, instead, it focuses on emotional immersion 
+                    and environmental storytelling. The changing tone of your mother’s voice reinforces the emotional journey from playful curiosity 
+                    to concern and, finally, comfort.
+                </p>
+            </div>
 
- 
+            <!-- Development Process -->
+            <div class="col-md-6">
+                <h2 class="mb-4">Development Process</h2>
+                <p>
+                    This was my first project made in <strong>Unreal Engine 5</strong>, developed using Blueprints.  
+                    Our team consisted of 3 developers and 1 artist.  
+                    I focused on interaction logic, environment setup, and flow control.  
+                    We worked closely to create a believable world with natural pacing and subtle emotional beats.  
+                    Learning Unreal’s Blueprint system and balancing visual quality with smooth VR performance 
+                    was a big part of my personal growth in this project.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="container py-5">
         <h2 class="mb-4 text-center">Code</h2>
     
@@ -121,7 +162,7 @@
         </div>
     </section>
 
-    <!-- Screenshots Grid -->
+    <!-- Screenshots -->
     <section class="container py-5 text-center">
         <h2 class="mb-4">Screenshots</h2>
         <div class="row">
@@ -137,11 +178,22 @@
         </div>
     </section>
 
-   
     
 
+    <!-- Challenges & Learnings -->
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">Challenges & Learnings</h2>
+        <p class="text-center w-75 mx-auto">
+            Since this was my first Unreal Engine 5 project, learning to work efficiently with Blueprints was a major challenge.  
+            I also had to carefully optimize performance to maintain immersion in VR without sacrificing visual quality.  
+            One of the biggest challenges was fine-tuning the pacing and interaction timing, every action and sound needed to feel natural 
+            within the limited development time.  
+            Through this project, I learned how to balance emotion, simplicity, and technical precision in VR storytelling.
+        </p>
+    </section>
+
     <!-- Footer -->
-    <footer class="text-center py-3 ">
+    <footer class="text-center py-3">
         <p>&copy; 2025 Esmée Veldhuizen🌸</p>
     </footer>
 
